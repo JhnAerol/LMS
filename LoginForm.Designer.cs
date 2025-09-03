@@ -36,31 +36,32 @@
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnRegister = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Location = new System.Drawing.Point(541, 408);
+            this.txtPassword.Location = new System.Drawing.Point(948, 445);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(385, 46);
             this.txtPassword.TabIndex = 8;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUsername
             // 
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUsername.Location = new System.Drawing.Point(541, 305);
+            this.txtUsername.Location = new System.Drawing.Point(948, 342);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(385, 46);
             this.txtUsername.TabIndex = 7;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // btnConfirm
             // 
@@ -69,7 +70,7 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirm.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnConfirm.Location = new System.Drawing.Point(650, 515);
+            this.btnConfirm.Location = new System.Drawing.Point(1057, 552);
             this.btnConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(143, 46);
@@ -121,26 +122,47 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Forgot Password?";
             // 
-            // label4
+            // btnRegister
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Lucida Sans", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(688, 572);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Register";
+            this.btnRegister.AutoSize = true;
+            this.btnRegister.BackColor = System.Drawing.Color.Transparent;
+            this.btnRegister.Font = new System.Drawing.Font("Lucida Sans", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Location = new System.Drawing.Point(1092, 612);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(71, 17);
+            this.btnRegister.TabIndex = 12;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Font = new System.Drawing.Font("Lucida Sans", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(734, 850);
+            this.panel1.TabIndex = 29;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(206, 413);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(296, 54);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Login Form";
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::RegistrationForm.Properties.Resources.LOGIN;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1469, 850);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -153,6 +175,8 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +191,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label btnRegister;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label12;
     }
 }

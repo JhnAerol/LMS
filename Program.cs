@@ -16,7 +16,7 @@ namespace RegistrationForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ForgotPassword());
+            Application.Run(new LoginForm());
         }
     }
 }

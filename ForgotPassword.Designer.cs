@@ -70,15 +70,18 @@
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // ForgotPasswordcs
+            // ForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(1469, 850);
             this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnConfirm);
-            this.Name = "ForgotPasswordcs";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "ForgotPassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ForgotPasswordcs";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -26,7 +26,7 @@ namespace RegistrationForm
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
-            {
+            { 
                 SqlCommand cmd = new SqlCommand("SP_Login", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -61,7 +61,31 @@ namespace RegistrationForm
                         if (reader.Read())
                         {
                             string message = reader["Message"].ToString();
+                            
                             MessageBox.Show(message, "Login Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            if(message == "Login Successful")
+                            {
+                                string role = reader["RoleCode"].ToString();
+
+                                if (role == "AD")
+                                {
+                                    this.Hide();
+                                    new AdminDashboard().Show();
+                                }
+                                else if (role == "TH")
+                                {
+                                    this.Hide();
+                                    new TeacherDashboard().Show();
+                                }
+                                else if (role == "ST")
+                                {
+                                    this.Hide();
+                                    new StudentDashboard().Show();
+                                }
+
+                            }
+
 
                             if (message == "Incorrect Username or Password")
                             {
@@ -105,14 +129,10 @@ namespace RegistrationForm
             
         }
 
-        private void txtUsername_TextChanged(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
+            this.Hide();
+            new RegisterForm().Show();
         }
     }
 }
