@@ -34,7 +34,12 @@ BEGIN
 		WHERE Username = @Username AND Password = @Password
 	)
 	BEGIN 
-		SELECT 'Login Successful' AS Message
+		SELECT 'Login Successful' AS Message,
+		Username,
+		Password,
+		LEFT(RoleCodeNumber,2) AS RoleCode
+		FROM Users
+		WHERE Username = @Username AND Password = @Password
 	END
 	BEGIN
 		SELECT 'Incorrect Username or Password' AS Message
