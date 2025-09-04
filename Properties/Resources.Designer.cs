@@ -63,6 +63,16 @@ namespace RegistrationForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap burger_bar {
+            get {
+                object obj = ResourceManager.GetObject("burger-bar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LOGIN {
             get {
                 object obj = ResourceManager.GetObject("LOGIN", resourceCulture);

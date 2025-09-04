@@ -22,5 +22,32 @@ namespace RegistrationForm
             this.Hide();
             new LoginForm().Show();
         }
+        bool sidebarExpand = true;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 15;
+                if (sidebar.Width <= 61)
+                {
+                    sidebarExpand = false;
+                    timer1.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 5;
+                if(sidebar.Width >= 214)
+                {
+                    sidebarExpand = true;
+                    timer1.Stop();
+                }
+            }
+        }
+
+        private void btnSidebar_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
     }
 }

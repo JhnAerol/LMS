@@ -22,5 +22,6 @@ namespace RegistrationForm
             this.Hide();
             new LoginForm().Show();
         }
+
     }
 }
