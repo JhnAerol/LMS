@@ -22,7 +22,7 @@ namespace RegistrationForm
         {
             panel1.Location = new Point(
                 (this.ClientSize.Width / 2) - (panel1.Width / 2),
-                (this.ClientSize.Height / 2) - (panel1.Height / 2)
+                (this.ClientSize.Height / 2) - (panel1.Height / 2) 
             );
 
         }
