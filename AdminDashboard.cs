@@ -12,6 +12,9 @@ namespace RegistrationForm
 {
     public partial class AdminDashboard : Form
     {
+
+        AddStudent Addstud;
+
         public AdminDashboard()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace RegistrationForm
         {
             if (sidebarExpand)
             {
-                sidebar.Width -= 15;
+                sidebar.Width -= 5;
                 if (sidebar.Width <= 61)
                 {
                     sidebarExpand = false;
@@ -48,6 +51,17 @@ namespace RegistrationForm
         private void btnSidebar_Click(object sender, EventArgs e)
         {
             timer1.Start();
+        }
+
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            if (Addstud == null)
+            {
+                Addstud = new AddStudent();
+                Addstud.MdiParent = this;
+                Addstud.Dock = DockStyle.Fill;
+                Addstud.Show();
+            }
         }
     }
 }
