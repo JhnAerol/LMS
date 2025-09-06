@@ -52,7 +52,7 @@ namespace RegistrationForm
                             SqlCommand cmd = new SqlCommand("SP_Register", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            cmd.Parameters.AddWithValue("RolePrefix", "TH");
+                            cmd.Parameters.AddWithValue("RolePrefix", "ST");
                             cmd.Parameters.AddWithValue("FirstName", txtFirstName.Text);
                             cmd.Parameters.AddWithValue("Address", txtAddress.Text);
                             cmd.Parameters.AddWithValue("Status", cmbStatus.Text);
