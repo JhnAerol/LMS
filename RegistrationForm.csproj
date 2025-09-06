@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddStudent.cs">
+    <Compile Include="AdminDashvoardMdiPages\Students\AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddStudent.Designer.cs">
+    <Compile Include="AdminDashvoardMdiPages\Students\AddStudent.Designer.cs">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminDashboard.cs">
@@ -58,11 +58,48 @@
     <Compile Include="AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Logs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Logs.Designer.cs">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Students\StudentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Students\StudentList.Designer.cs">
+      <DependentUpon>StudentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Subjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Subjects.Designer.cs">
+      <DependentUpon>Subjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Teacher\TeacherList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Teacher\TeacherList.Designer.cs">
+      <DependentUpon>TeacherList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connection\ConnectionString.cs" />
     <Compile Include="ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Teacher\AddTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Teacher\AddTeacher.Designer.cs">
+      <DependentUpon>AddTeacher.cs</DependentUpon>
     </Compile>
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
@@ -78,6 +115,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AdminDashvoardMdiPages\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="StudentDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,14 +133,32 @@
     <Compile Include="TeacherDashboard.Designer.cs">
       <DependentUpon>TeacherDashboard.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddStudent.resx">
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Students\AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Logs.resx">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Students\StudentList.resx">
+      <DependentUpon>StudentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Subjects.resx">
+      <DependentUpon>Subjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Teacher\TeacherList.resx">
+      <DependentUpon>TeacherList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Teacher\AddTeacher.resx">
+      <DependentUpon>AddTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
@@ -115,6 +176,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentDashboard.resx">
       <DependentUpon>StudentDashboard.cs</DependentUpon>
     </EmbeddedResource>

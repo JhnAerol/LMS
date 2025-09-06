@@ -1,6 +1,6 @@
-﻿namespace RegistrationForm
+﻿namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
 {
-    partial class AddStudent
+    partial class TeacherList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(49, 32);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1091, 734);
+            this.panel1.TabIndex = 5;
             // 
             // label1
             // 
@@ -40,31 +50,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(264, 251);
+            this.label1.Location = new System.Drawing.Point(433, 340);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(300, 55);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Add Student";
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Teacher List";
             // 
-            // panel1
+            // TeacherList
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(39, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(818, 596);
-            this.panel1.TabIndex = 1;
-            // 
-            // AddStudent
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 648);
+            this.ClientSize = new System.Drawing.Size(1188, 798);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AddStudent";
-            this.Text = "AddStudent";
-            this.Resize += new System.EventHandler(this.AddStudent_Resize);
+            this.Name = "TeacherList";
+            this.Text = "TeacherList";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -73,7 +74,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

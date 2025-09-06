@@ -8,23 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RegistrationForm
+namespace RegistrationForm.AdminDashvoardMdiPages
 {
-    public partial class AddStudent : Form
+    public partial class Subjects : Form
     {
-        public AddStudent()
+        public Subjects()
         {
             InitializeComponent();
-
         }
 
-        private void AddStudent_Resize(object sender, EventArgs e)
+        private void Subjects_Resize(object sender, EventArgs e)
         {
             panel1.Location = new Point(
-                (this.ClientSize.Width / 2) - (panel1.Width / 2),
-                (this.ClientSize.Height / 2) - (panel1.Height / 2) 
-            );
-
+               (this.ClientSize.Width / 2) - (panel1.Width / 2),
+               (this.ClientSize.Height / 2) - (panel1.Height / 2)
+           );
         }
     }
 }
