@@ -30,12 +30,19 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgvTeacher = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.dgvTeacher);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(49, 32);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -53,9 +60,40 @@
             this.label1.Location = new System.Drawing.Point(433, 340);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(300, 55);
+            this.label1.Size = new System.Drawing.Size(370, 69);
             this.label1.TabIndex = 1;
             this.label1.Text = "Teacher List";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(116, 33);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(195, 22);
+            this.txtSearch.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(20, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 23);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Search: ";
+            // 
+            // dgvTeacher
+            // 
+            this.dgvTeacher.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTeacher.Location = new System.Drawing.Point(14, 93);
+            this.dgvTeacher.MultiSelect = false;
+            this.dgvTeacher.Name = "dgvTeacher";
+            this.dgvTeacher.RowHeadersVisible = false;
+            this.dgvTeacher.RowHeadersWidth = 51;
+            this.dgvTeacher.RowTemplate.Height = 24;
+            this.dgvTeacher.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTeacher.Size = new System.Drawing.Size(1062, 621);
+            this.dgvTeacher.TabIndex = 3;
             // 
             // TeacherList
             // 
@@ -66,8 +104,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TeacherList";
             this.Text = "TeacherList";
+            this.Resize += new System.EventHandler(this.TeacherList_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -76,5 +116,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvTeacher;
     }
 }
