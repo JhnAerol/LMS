@@ -19,7 +19,6 @@ namespace RegistrationForm
         public AddStudent()
         {
             InitializeComponent();
-
         }
 
         private void AddStudent_Resize(object sender, EventArgs e)
@@ -62,6 +61,9 @@ namespace RegistrationForm
                             cmd.Parameters.AddWithValue("Phone", Convert.ToInt32(txtPhone.Text));
                             cmd.Parameters.AddWithValue("LastName", txtLastName.Text);
                             cmd.Parameters.AddWithValue("Age", Convert.ToInt32(txtAge.Text));
+                            cmd.Parameters.AddWithValue("EnrollmentDate", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@DepartmentName", DBNull.Value); 
+                            cmd.Parameters.AddWithValue("@HireDate", DBNull.Value);       
 
                             if (radFemale.Checked)
                             {

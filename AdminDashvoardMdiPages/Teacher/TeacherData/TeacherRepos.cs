@@ -41,15 +41,17 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher.TeacherData
                         TeacherModel teacher = new TeacherModel();
 
                         teacher.Id = reader.GetInt32(0);
-                        teacher.Firstname = reader.GetString(1);
-                        teacher.Lastname = reader.GetString(2);
-                        teacher.Age = reader.GetInt32(3);
-                        teacher.Gender = reader.GetString(4);
-                        teacher.Phone = reader.IsDBNull(5) ? (int?)null : reader.GetInt32(5);
-                        teacher.Address = reader.GetString(6);
-                        teacher.Email = reader.GetString(7);
-                        teacher.Status = reader.GetString(8);
-                        teacher.RolesCode = reader.GetString(9);
+                        teacher.HireDate = reader.GetDateTime(1);
+                        teacher.DepartmentID = reader.GetInt32(2);
+                        teacher.Firstname = reader.GetString(3);
+                        teacher.Lastname = reader.GetString(4);
+                        teacher.Age = reader.GetInt32(5);
+                        teacher.Gender = reader.GetString(6);
+                        teacher.Phone = reader.GetInt32(7);
+                        teacher.Address = reader.GetString(8);
+                        teacher.Email = reader.GetString(9);
+                        teacher.Status = reader.GetString(10);
+                        teacher.RolesCode = reader.GetString(11);
 
                         teachers.Add(teacher);
                     }

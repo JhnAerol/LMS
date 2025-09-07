@@ -25,6 +25,8 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
             DataTable dt = new DataTable();
 
             dt.Columns.Add("ID");
+            dt.Columns.Add("Hire Date");
+            dt.Columns.Add("DepartmentID");
             dt.Columns.Add("First Name");
             dt.Columns.Add("Last Name");
             dt.Columns.Add("Age");
@@ -43,6 +45,8 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
                 var row = dt.NewRow();
 
                 row["ID"] = Convert.ToInt32(teacher.Id);
+                row["Hire Date"] = teacher.HireDate;
+                row["DepartmentID"] = teacher.DepartmentID;
                 row["First Name"] = teacher.Firstname;
                 row["Last Name"] = teacher.Lastname;
                 row["Age"] = Convert.ToInt32(teacher.Age);

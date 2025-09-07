@@ -50,7 +50,7 @@ namespace RegistrationForm.MdiPages
                             SqlCommand cmd = new SqlCommand("SP_Register", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            cmd.Parameters.AddWithValue("RolePrefix", "ST");
+                            cmd.Parameters.AddWithValue("RolePrefix", "TH");
                             cmd.Parameters.AddWithValue("FirstName", txtFirstName.Text);
                             cmd.Parameters.AddWithValue("Address", txtAddress.Text);
                             cmd.Parameters.AddWithValue("Status", cmbStatus.Text);
@@ -60,6 +60,9 @@ namespace RegistrationForm.MdiPages
                             cmd.Parameters.AddWithValue("Phone", Convert.ToInt32(txtPhone.Text));
                             cmd.Parameters.AddWithValue("LastName", txtLastName.Text);
                             cmd.Parameters.AddWithValue("Age", Convert.ToInt32(txtAge.Text));
+                            cmd.Parameters.AddWithValue("HireDate", DateTime.Now);
+                            cmd.Parameters.AddWithValue("DepartmentName", cmbDepartments.Text);
+                            cmd.Parameters.AddWithValue("@EnrollmentDate", DBNull.Value);
 
                             if (radFemale.Checked)
                             {

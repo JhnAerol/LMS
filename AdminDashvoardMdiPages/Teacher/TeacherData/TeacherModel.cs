@@ -18,5 +18,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher.TeacherData
         public string Email { get; set; }
         public string Status { get; set; }
         public string RolesCode { get; set; }
+        public int DepartmentID { get; set; }
+        public DateTime HireDate { get; set; }
     }
 }
