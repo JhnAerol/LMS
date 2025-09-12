@@ -46,6 +46,8 @@ namespace RegistrationForm
                     }
                     else
                     {
+                        string hashpassword = PasswordEncryption.SHA256Hash(txtPassword.Text);
+
                         using (SqlConnection conn = new SqlConnection(connectionString))
                         {
                             SqlCommand cmd = new SqlCommand("SP_Register", conn);
@@ -56,7 +58,7 @@ namespace RegistrationForm
                             cmd.Parameters.AddWithValue("Address", txtAddress.Text);
                             cmd.Parameters.AddWithValue("Status", cmbStatus.Text);
                             cmd.Parameters.AddWithValue("Username", TxtUsername.Text);
-                            cmd.Parameters.AddWithValue("Password", txtPassword.Text);
+                            cmd.Parameters.AddWithValue("Password", hashpassword);
                             cmd.Parameters.AddWithValue("Email", txtEmail.Text);
                             cmd.Parameters.AddWithValue("Phone", Convert.ToInt32(txtPhone.Text));
                             cmd.Parameters.AddWithValue("LastName", txtLastName.Text);

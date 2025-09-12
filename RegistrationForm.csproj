@@ -105,6 +105,7 @@
     <Compile Include="AdminDashvoardMdiPages\Teacher\AddTeacher.Designer.cs">
       <DependentUpon>AddTeacher.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordEncryption.cs" />
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>

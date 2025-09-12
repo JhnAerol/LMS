@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationForm.Connection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,20 +19,22 @@ namespace RegistrationForm
             InitializeComponent();
         }
 
-        string ConnectionString = @"Data Source=DESKTOP-H4JIUJU\SQLEXPRESS;Initial Catalog=Proel2D;Integrated Security=True";
+        string Connectionstring = ConnectionString.conn;
 
         int failedAttepmts = 0;
         int timer = 10;
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = new SqlConnection(Connectionstring))
             { 
                 SqlCommand cmd = new SqlCommand("SP_Login", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                string hash = PasswordEncryption.SHA256Hash(txtPassword.Text);
+
                 cmd.Parameters.AddWithValue("Username", txtUsername.Text);
-                cmd.Parameters.AddWithValue("Password", txtPassword.Text);
+                cmd.Parameters.AddWithValue("Password", hash);
 
                 try
                 {
@@ -60,14 +63,18 @@ namespace RegistrationForm
                     {
                         if (reader.Read())
                         {
+                            //var schema = reader.GetSchemaTable();
+                            //foreach (DataRow row in schema.Rows)
+                            //{
+                            //    MessageBox.Show($"{row["ColumnName"]} - {row["DataType"]}");
+                            //}
+
                             string message = reader["Message"].ToString();
-                            
+                            string role = reader["RoleCode"].ToString();
                             MessageBox.Show(message, "Login Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            if(message == "Login Successful")
+                            if (message == "Login Successful")
                             {
-                                string role = reader["RoleCode"].ToString();
-
                                 if (role == "AD")
                                 {
                                     this.Hide();
@@ -85,8 +92,7 @@ namespace RegistrationForm
                                 }
 
                             }
-
-
+                            
                             if (message == "Incorrect Username or Password")
                             {
                                 failedAttepmts++;
@@ -98,12 +104,13 @@ namespace RegistrationForm
 
                                     timer1.Enabled = true;
 
-                                    MessageBox.Show("You failed to attempt 3 times. Please wait.", "Failed Attempts", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("You failed to attempt 3 times. Please wait.", "Failed Attempts",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                         }
+                        reader.Close();
                     }
-                    reader.Close();
+                    
                 }
                 catch (Exception ex)
                 {

@@ -31,11 +31,6 @@ CREATE TABLE Roles(
 	RoleName NVARCHAR(50)
 )
 
-
-
-ALTER TABLE Students
-DROP COLUMN RoleCodeNumber 
-
 CREATE TABLE Departments(
 	DepartmentID INT PRIMARY KEY IDENTITY(1,1),
 	DepartmentName NVARCHAR(50)
@@ -57,8 +52,33 @@ CREATE TABLE Students (
 	EnrollmentDate DATETIME
 )
 
-ALTER TABLE Profiles
-ADD RoleCodeNumber NVARCHAR(50)
+CREATE TABLE Semesters (
+	SemesterID INT PRIMARY KEY IDENTITY(1,1),
+	AcademicYear DATETIME,
+	TermName NVARCHAR(50)
+)
+
+CREATE TABLE COURSES (
+	CourseID INT PRIMARY KEY IDENTITY(1,1),
+	CourseName NVARCHAR(50),
+    CourseCode NVARCHAR(50),
+    Description NVARCHAR(50),
+    Credits INT,
+	TeacherID INT,
+	DepartmentID INT,
+	FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID),
+	FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+)
+
+CREATE TABLE Enrollments (
+	EnrollmentID INT PRIMARY KEY IDENTITY(1,1),
+	StudentID INT,
+    CourseID INT,
+    SemesterID INT,
+	FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+	FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
+	FOREIGN KEY (SemesterID) REFERENCES Semesters(SemesterID)
+)
 
 INSERT INTO Roles (RoleCode, RoleName)
 VALUES 
@@ -74,19 +94,8 @@ VALUES
 (4, 'College of Education'),
 (5, 'College of Criminal Justice')
 
-UPDATE Departments
-SET DepartmentName = 'College of Computer Science'
-WHERE DepartmentID = 1
-
-ALTER TABLE Teachers
-ALTER COLUMN HireDate DATETIME NULL
-ALTER TABLE Departments
-ALTER COLUMN DepartmentName NVARCHAR(50) NULL
-
-ALTER TABLE Students
-ALTER COLUMN EnrollmentDate DATETIME NULL
-
-USE Proel2D
+EXEC sp_rename 'Teachers.TeaacherID', 'TeacherID', 'COLUMN';
+EXEC sp_rename 'COURSES', 'Courses';
 
 SELECT * FROM Roles
 SELECT * FROM Users
@@ -94,6 +103,9 @@ SELECT * FROM Profiles
 SELECT * FROM Teachers
 SELECT * FROM Departments
 SELECT * FROM Students
+SELECT * FROM Semesters
+SELECT * FROM Enrollments
+SELECT * FROM Courses
 
 DROP TABLE Roles
 DROP TABLE Users

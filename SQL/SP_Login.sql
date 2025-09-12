@@ -1,14 +1,6 @@
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
+USE [Proel2D]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Login]    Script Date: 08/09/2025 7:25:09 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,11 +10,11 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE SP_Login
+ALTER PROCEDURE [dbo].[SP_Login]
 	-- Add the parameters for the stored procedure here
 	@Username NVARCHAR(50),
 	@Password NVARCHAR(50)
-
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,8 +29,10 @@ BEGIN
 		SELECT 'Login Successful' AS Message,
 		Username,
 		Password,
-		LEFT(RoleCodeNumber,2) AS RoleCode
+		LEFT(Profiles.RoleCodeNumber,2) AS RoleCode
 		FROM Users
+		RIGHT JOIN Profiles 
+		ON Users.ProfileID = Profiles.ProfileID
 		WHERE Username = @Username AND Password = @Password
 	END
 	BEGIN
@@ -51,4 +45,3 @@ BEGIN
 	WHERE Username = @Username AND Password = @Password
 
 END
-GO
