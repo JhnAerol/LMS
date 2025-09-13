@@ -1,4 +1,4 @@
-﻿namespace RegistrationForm.AdminDashvoardMdiPages
+﻿namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
 {
     partial class Subjects
     {
@@ -29,33 +29,55 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.dgvSubjects = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.dgvSubjects);
             this.panel1.Location = new System.Drawing.Point(49, 32);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1091, 734);
             this.panel1.TabIndex = 3;
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(116, 27);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(195, 22);
+            this.txtSearch.TabIndex = 5;
+            // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(410, 355);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 55);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Subjects";
+            this.label1.Size = new System.Drawing.Size(91, 23);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Search: ";
+            // 
+            // dgvSubjects
+            // 
+            this.dgvSubjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSubjects.Location = new System.Drawing.Point(14, 87);
+            this.dgvSubjects.MultiSelect = false;
+            this.dgvSubjects.Name = "dgvSubjects";
+            this.dgvSubjects.RowHeadersVisible = false;
+            this.dgvSubjects.RowHeadersWidth = 51;
+            this.dgvSubjects.RowTemplate.Height = 24;
+            this.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSubjects.Size = new System.Drawing.Size(1062, 621);
+            this.dgvSubjects.TabIndex = 3;
             // 
             // Subjects
             // 
@@ -69,6 +91,7 @@
             this.Resize += new System.EventHandler(this.Subjects_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -76,6 +99,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvSubjects;
     }
 }

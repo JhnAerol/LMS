@@ -1,5 +1,4 @@
-﻿using RegistrationForm.AdminDashvoardMdiPages.Students.StudentData;
-using RegistrationForm.AdminDashvoardMdiPages.Teacher.TeacherData;
+﻿using RegistrationForm.AdminDashvoardMdiPages.Teacher.TeacherData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

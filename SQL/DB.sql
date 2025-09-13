@@ -100,6 +100,9 @@ VALUES
 (1, '2025-2026', 'First Semester'),
 (2, '2025-2026', 'Second Semester')
 
+ALTER TABLE Courses
+ALTER COLUMN Credits DECIMAL(5,2)
+
 INSERT INTO Courses( CourseName, CourseCode, Description, Credits, TeacherID, DepartmentID)
 VALUES
 ( 'Programming', 'PROG1', 'Computer Programming 1', 3.0, 3, 1),
@@ -123,12 +126,10 @@ WHERE CourseID = 5
 SELECT * FROM Roles
 SELECT * FROM Users
 SELECT * FROM Profiles
-SELECT * FROM Teachers
-SELECT * FROM Departments
 SELECT * FROM Students
 SELECT * FROM Semesters
 SELECT * FROM Enrollments
-SELECT * FROM Courses
+
 
 DROP TABLE Roles
 DROP TABLE Users
@@ -138,3 +139,28 @@ DROP TABLE Students
 DROP TABLE Semesters
 DROP TABLE Enrollments
 DROP TABLE Courses
+
+SELECT Teachers.TeacherID,
+		CONCAT(Profiles.FirstName, ' ', Profiles.LastName) AS FullName,
+		Courses.CourseName
+FROM Teachers
+LEFT JOIN Courses
+ON Teachers.TeacherID = Courses.TeacherID
+LEFT JOIN Profiles
+ON Teachers.ProfileID = Profiles.ProfileID
+WHERE Courses.CourseName IS NULL
+
+
+CREATE PROC SP_GetAvTeacher
+
+AS 
+BEGIN
+SELECT CONCAT(Profiles.FirstName, ' ', Profiles.LastName) AS FullName
+		FROM Teachers
+		 LEFT JOIN Courses
+			ON Teachers.TeacherID = Courses.TeacherID
+		 LEFT JOIN Profiles
+			ON Teachers.ProfileID = Profiles.ProfileID
+		WHERE Courses.CourseName IS NULL
+
+END

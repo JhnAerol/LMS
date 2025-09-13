@@ -1,6 +1,7 @@
 ﻿using RegistrationForm.AdminDashvoardMdiPages;
 using RegistrationForm.AdminDashvoardMdiPages.Students;
 using RegistrationForm.AdminDashvoardMdiPages.Teacher;
+using RegistrationForm.AdminDashvoardMdiPages.Subjects;
 using RegistrationForm.MdiPages;
 using System;
 using System.Collections.Generic;

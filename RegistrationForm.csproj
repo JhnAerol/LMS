@@ -78,10 +78,18 @@
     <Compile Include="AdminDashvoardMdiPages\Students\StudentList.Designer.cs">
       <DependentUpon>StudentList.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Subjects.cs">
+    <Compile Include="AdminDashvoardMdiPages\Subjects\AddSubject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Subjects.Designer.cs">
+    <Compile Include="AdminDashvoardMdiPages\Subjects\AddSubject.Designer.cs">
+      <DependentUpon>AddSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Subjects\SubjectData\SubjectModel.cs" />
+    <Compile Include="AdminDashvoardMdiPages\Subjects\SubjectData\SubjectRepos.cs" />
+    <Compile Include="AdminDashvoardMdiPages\Subjects\Subjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Subjects\Subjects.Designer.cs">
       <DependentUpon>Subjects.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminDashvoardMdiPages\Teacher\TeacherData\TeacherModel.cs" />
@@ -153,7 +161,10 @@
     <EmbeddedResource Include="AdminDashvoardMdiPages\Students\StudentList.resx">
       <DependentUpon>StudentList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminDashvoardMdiPages\Subjects.resx">
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Subjects\AddSubject.resx">
+      <DependentUpon>AddSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashvoardMdiPages\Subjects\Subjects.resx">
       <DependentUpon>Subjects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashvoardMdiPages\Teacher\TeacherList.resx">
