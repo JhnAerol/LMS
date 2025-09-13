@@ -80,6 +80,7 @@ CREATE TABLE Enrollments (
 	FOREIGN KEY (SemesterID) REFERENCES Semesters(SemesterID)
 )
 
+
 INSERT INTO Roles (RoleCode, RoleName)
 VALUES 
 ('ST', 'Student'),
@@ -99,8 +100,25 @@ VALUES
 (1, '2025-2026', 'First Semester'),
 (2, '2025-2026', 'Second Semester')
 
+INSERT INTO Courses( CourseName, CourseCode, Description, Credits, TeacherID, DepartmentID)
+VALUES
+( 'Programming', 'PROG1', 'Computer Programming 1', 3.0, 3, 1),
+( 'Biology', 'BIO1', 'Biology 1', 3.0, 6, 3),
+( 'Finance', 'FNCE', 'Finance Fundamentals', 3.0, 4, 2),
+( 'Math', 'MATH1', 'Basic Math', 3.0, 5, 4),
+( 'Criminology', 'CRIM101', 'Introduction to Criminology', 3.0, 3, 5),
+( 'Artificial Intelligence', 'AI101', 'Introduction to AI', 3.0, NULL, 1),
+( 'Web', 'WEB101', 'Introduction to Website Development', 3.0, NULL, 1)
+
+
+
+
 EXEC sp_rename 'Teachers.TeaacherID', 'TeacherID', 'COLUMN';
 EXEC sp_rename 'COURSES', 'Courses';
+
+UPDATE Courses
+SET TeacherID = 2
+WHERE CourseID = 5
 
 SELECT * FROM Roles
 SELECT * FROM Users
@@ -119,3 +137,4 @@ DROP TABLE Teachers
 DROP TABLE Students
 DROP TABLE Semesters
 DROP TABLE Enrollments
+DROP TABLE Courses
