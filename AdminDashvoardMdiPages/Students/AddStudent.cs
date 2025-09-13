@@ -64,8 +64,10 @@ namespace RegistrationForm
                             cmd.Parameters.AddWithValue("LastName", txtLastName.Text);
                             cmd.Parameters.AddWithValue("Age", Convert.ToInt32(txtAge.Text));
                             cmd.Parameters.AddWithValue("EnrollmentDate", DateTime.Now);
-                            cmd.Parameters.AddWithValue("@DepartmentName", DBNull.Value); 
-                            cmd.Parameters.AddWithValue("@HireDate", DBNull.Value);       
+                            cmd.Parameters.AddWithValue("TermName", cmbTerm.Text);
+                            cmd.Parameters.AddWithValue("CourseName", cmbCourses.Text);
+                            cmd.Parameters.AddWithValue("DepartmentName", DBNull.Value); 
+                            cmd.Parameters.AddWithValue("HireDate", DBNull.Value);       
 
                             if (radFemale.Checked)
                             {
@@ -102,6 +104,20 @@ namespace RegistrationForm
                     yield return child;
                 }
                 yield return ctrl;
+            }
+        }
+
+        private void cmbTerm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbTerm.SelectedIndex == 0)
+            {
+                cmbCourses.Items.Add("Programming");
+                cmbCourses.Items.Add("Biology");
+                cmbCourses.Items.Add("Finance");
+                cmbCourses.Items.Add("Math");
+                cmbCourses.Items.Add("Criminology");
+                cmbCourses.Items.Add("Artificial Intelligence");
+                cmbCourses.Items.Add("Web");
             }
         }
     }

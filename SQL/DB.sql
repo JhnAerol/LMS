@@ -53,8 +53,8 @@ CREATE TABLE Students (
 )
 
 CREATE TABLE Semesters (
-	SemesterID INT PRIMARY KEY IDENTITY(1,1),
-	AcademicYear DATETIME,
+	SemesterID INT PRIMARY KEY,
+	AcademicYear NVARCHAR(50),
 	TermName NVARCHAR(50)
 )
 
@@ -94,6 +94,11 @@ VALUES
 (4, 'College of Education'),
 (5, 'College of Criminal Justice')
 
+INSERT INTO Semesters(SemesterID, AcademicYear, TermName)
+VALUES
+(1, '2025-2026', 'First Semester'),
+(2, '2025-2026', 'Second Semester')
+
 EXEC sp_rename 'Teachers.TeaacherID', 'TeacherID', 'COLUMN';
 EXEC sp_rename 'COURSES', 'Courses';
 
@@ -112,3 +117,5 @@ DROP TABLE Users
 DROP TABLE Profiles
 DROP TABLE Teachers
 DROP TABLE Students
+DROP TABLE Semesters
+DROP TABLE Enrollments

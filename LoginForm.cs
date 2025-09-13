@@ -92,7 +92,6 @@ namespace RegistrationForm
                                 }
 
                             }
-                            
                             if (message == "Incorrect Username or Password")
                             {
                                 failedAttepmts++;

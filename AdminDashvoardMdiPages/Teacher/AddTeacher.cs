@@ -65,6 +65,8 @@ namespace RegistrationForm.MdiPages
                             cmd.Parameters.AddWithValue("HireDate", DateTime.Now);
                             cmd.Parameters.AddWithValue("DepartmentName", cmbDepartments.Text);
                             cmd.Parameters.AddWithValue("@EnrollmentDate", DBNull.Value);
+                            cmd.Parameters.AddWithValue("TermName", DBNull.Value);
+                            cmd.Parameters.AddWithValue("CourseName", DBNull.Value);
 
                             if (radFemale.Checked)
                             {
