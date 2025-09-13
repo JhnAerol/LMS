@@ -40,15 +40,16 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students.StudentData
                         StudentModel student = new StudentModel();
 
                         student.Id = reader.GetInt32(0);
-                        student.Firstname = reader.GetString(1);
-                        student.Lastname = reader.GetString(2);
-                        student.Age = reader.GetInt32(3);
-                        student.Gender = reader.GetString(4);
-                        student.Phone = reader.IsDBNull(5) ? (int?)null : reader.GetInt32(5);
-                        student.Address = reader.GetString(6);
-                        student.Email = reader.GetString(7);
-                        student.Status = reader.GetString(8);
-                        student.RolesCode = reader.GetString(9);
+                        student.EnrollmentDate = reader.GetDateTime(1);
+                        student.Firstname = reader.GetString(2);
+                        student.Lastname = reader.GetString(3);
+                        student.Age = reader.GetInt32(4);
+                        student.Gender = reader.GetString(5);
+                        student.Phone = reader.IsDBNull(6) ? (int?)null : reader.GetInt32(6);
+                        student.Address = reader.GetString(7);
+                        student.Email = reader.GetString(8);
+                        student.Status = reader.GetString(9);
+                        student.RolesCode = reader.GetString(10);
 
                         students.Add(student);
                     }

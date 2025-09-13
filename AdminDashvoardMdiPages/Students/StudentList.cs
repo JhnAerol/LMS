@@ -33,6 +33,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
             DataTable dt = new DataTable();
 
             dt.Columns.Add("ID");
+            dt.Columns.Add("Enrollment Date");
             dt.Columns.Add("First Name");
             dt.Columns.Add("Last Name");
             dt.Columns.Add("Age");
@@ -51,6 +52,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
                 var row = dt.NewRow();
 
                 row["ID"] = Convert.ToInt32(student.Id);
+                row["Enrollment Date"] = Convert.ToDateTime(student.EnrollmentDate);
                 row["First Name"] = student.Firstname;
                 row["Last Name"] = student.Lastname;
                 row["Age"] = Convert.ToInt32(student.Age);
