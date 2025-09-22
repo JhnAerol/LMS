@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrintStudents = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.dgvTeacher = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvTeacher = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
@@ -40,6 +44,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnPrintStudents);
+            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.btnUpdate);
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.dgvTeacher);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label2);
@@ -49,6 +57,61 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1091, 734);
             this.panel1.TabIndex = 5;
+            // 
+            // btnPrintStudents
+            // 
+            this.btnPrintStudents.Location = new System.Drawing.Point(906, 27);
+            this.btnPrintStudents.Name = "btnPrintStudents";
+            this.btnPrintStudents.Size = new System.Drawing.Size(170, 34);
+            this.btnPrintStudents.TabIndex = 13;
+            this.btnPrintStudents.Text = "PRINT STUDENT";
+            this.btnPrintStudents.UseVisualStyleBackColor = true;
+            this.btnPrintStudents.Click += new System.EventHandler(this.btnPrintStudents_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(771, 27);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(101, 34);
+            this.btnPrint.TabIndex = 10;
+            this.btnPrint.Text = "PRINT";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(624, 27);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(101, 34);
+            this.btnUpdate.TabIndex = 9;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(475, 27);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(101, 34);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // dgvTeacher
+            // 
+            this.dgvTeacher.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTeacher.Location = new System.Drawing.Point(14, 93);
+            this.dgvTeacher.MultiSelect = false;
+            this.dgvTeacher.Name = "dgvTeacher";
+            this.dgvTeacher.RowHeadersVisible = false;
+            this.dgvTeacher.RowHeadersWidth = 51;
+            this.dgvTeacher.RowTemplate.Height = 24;
+            this.dgvTeacher.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTeacher.Size = new System.Drawing.Size(1062, 621);
+            this.dgvTeacher.TabIndex = 3;
+            this.dgvTeacher.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeacher_CellClick);
             // 
             // txtSearch
             // 
@@ -66,20 +129,6 @@
             this.label2.Size = new System.Drawing.Size(91, 23);
             this.label2.TabIndex = 4;
             this.label2.Text = "Search: ";
-            // 
-            // dgvTeacher
-            // 
-            this.dgvTeacher.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTeacher.Location = new System.Drawing.Point(14, 93);
-            this.dgvTeacher.MultiSelect = false;
-            this.dgvTeacher.Name = "dgvTeacher";
-            this.dgvTeacher.RowHeadersVisible = false;
-            this.dgvTeacher.RowHeadersWidth = 51;
-            this.dgvTeacher.RowTemplate.Height = 24;
-            this.dgvTeacher.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTeacher.Size = new System.Drawing.Size(1062, 621);
-            this.dgvTeacher.TabIndex = 3;
             // 
             // label1
             // 
@@ -119,5 +168,9 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvTeacher;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnPrintStudents;
     }
 }

@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvStudents = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.btnPrintCoursesAndTeacher = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
@@ -39,6 +43,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnPrintCoursesAndTeacher);
+            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.btnUpdate);
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvStudents);
@@ -47,6 +55,53 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1091, 734);
             this.panel1.TabIndex = 4;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(776, 31);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(101, 34);
+            this.btnPrint.TabIndex = 9;
+            this.btnPrint.Text = "PRINT";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(647, 31);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(101, 34);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(514, 31);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(101, 34);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(115, 37);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(195, 22);
+            this.txtSearch.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Search: ";
             // 
             // dgvStudents
             // 
@@ -61,23 +116,17 @@
             this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudents.Size = new System.Drawing.Size(1062, 621);
             this.dgvStudents.TabIndex = 0;
+            this.dgvStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellClick);
             // 
-            // label1
+            // btnPrintCoursesAndTeacher
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Search: ";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(115, 37);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(195, 22);
-            this.txtSearch.TabIndex = 2;
+            this.btnPrintCoursesAndTeacher.Location = new System.Drawing.Point(892, 23);
+            this.btnPrintCoursesAndTeacher.Name = "btnPrintCoursesAndTeacher";
+            this.btnPrintCoursesAndTeacher.Size = new System.Drawing.Size(136, 49);
+            this.btnPrintCoursesAndTeacher.TabIndex = 13;
+            this.btnPrintCoursesAndTeacher.Text = "PRINT COURSES AND TEACHER";
+            this.btnPrintCoursesAndTeacher.UseVisualStyleBackColor = true;
+            this.btnPrintCoursesAndTeacher.Click += new System.EventHandler(this.btnPrintCoursesAndTeacher_Click);
             // 
             // StudentList
             // 
@@ -102,5 +151,9 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvStudents;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnPrintCoursesAndTeacher;
     }
 }
