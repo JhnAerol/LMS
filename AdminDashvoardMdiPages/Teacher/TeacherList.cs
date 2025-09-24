@@ -6,6 +6,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using RegistrationForm.AdminDashvoardMdiPages.LogsFolder;
 using RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData;
 using RegistrationForm.AdminDashvoardMdiPages.Teacher.TeacherData;
 using System;
@@ -25,6 +26,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
         TeacherRepos repos = new TeacherRepos();
         DataTable activeTeacher;
         DataTable studentsInTeacher;
+        DataTable dt;
 
         public TeacherList()
         {
@@ -35,7 +37,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
 
         public void ReadTeacher()
         {
-            DataTable dt = new DataTable();
+            dt = new DataTable();
 
             dt.Columns.Add("ID");
             dt.Columns.Add("Hire Date");
@@ -72,7 +74,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
                 dt.Rows.Add(row);
             }
 
-            dgvTeacher.DataSource = dt;
+            
         }
 
         public void ReadActiveTeacher()
@@ -113,6 +115,8 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
 
                 activeTeacher.Rows.Add(row);
             }
+
+            dgvTeacher.DataSource = activeTeacher;
         }
 
         public void ReadStudentsInTeacher(int r)
@@ -161,6 +165,8 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
                 MessageBox.Show("Delete Completed", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ReadTeacher();
                 ReadActiveTeacher();
+                Log.Logss(User.Name, "Deleting Teacher");
+
             }
             else
             {
@@ -191,6 +197,8 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
                 repos.UpdateTeacher(id, hiredate, depid, firstname, lastname, age, gender, phone, address, email, status, rcn);
                 MessageBox.Show("Update Completed", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ReadTeacher();
+                ReadActiveTeacher();
+                Log.Logss(User.Name, "Updating Teacher");
             }
             else
             {
@@ -209,7 +217,6 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
                 PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
                 PdfFont regularFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
 
-                // Title
                 Paragraph title = new Paragraph("List of Active Teachers")
                     .SetFont(boldFont)
                     .SetFontSize(14)
@@ -217,13 +224,11 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
                 document.Add(title);
                 document.Add(new Paragraph("\n"));
 
-                // Column widths
                 float[] widths = new float[dt.Columns.Count];
                 for (int i = 0; i < widths.Length; i++) widths[i] = 1f;
 
                 Table table = new Table(UnitValue.CreatePercentArray(widths)).UseAllAvailableWidth();
 
-                // Headers
                 foreach (DataColumn col in dt.Columns)
                 {
                     var header = new Paragraph(col.ColumnName)
@@ -235,7 +240,6 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
                     table.AddHeaderCell(headerCell);
                 }
 
-                // Rows
                 foreach (DataRow row in dt.Rows)
                 {
                     foreach (var item in row.ItemArray)
@@ -362,6 +366,44 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
             int id = Convert.ToInt32(dgvTeacher.Rows[r].Cells[0].Value);
 
             ReadStudentsInTeacher(id);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = txtSearch.Text.Trim();
+            DataView dataView = activeTeacher.DefaultView;
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                if (filterText.Equals("Male", StringComparison.OrdinalIgnoreCase) ||
+                    filterText.Equals("Female", StringComparison.OrdinalIgnoreCase))
+                {
+                    dataView.RowFilter = $"[Gender] = '{filterText.Replace("'", "''")}'";
+                }
+                else if (int.TryParse(filterText, out int depId))
+                {
+                    dataView.RowFilter = $"Convert([DepartmentID], 'System.String') LIKE '{depId}%'" +
+                                         $" OR Convert([ID], 'System.String') LIKE '{depId}%'";
+                }
+                else
+                {
+                    dataView.RowFilter = string.Format(
+                        "[First Name] LIKE '%{0}%' OR " +
+                        "[Last Name] LIKE '%{0}%' OR " +
+                        "Convert([Age], 'System.String') LIKE '%{0}%' OR " +
+                        "Convert([DepartmentID], 'System.String') LIKE '%{0}%' OR " +
+                        "Convert([Hire Date], 'System.String') LIKE '%{0}%' OR " +
+                        "[Phone] LIKE '%{0}%' OR " +
+                        "[Email] LIKE '%{0}%' OR " +
+                        "[Address] LIKE '%{0}%'",
+                        filterText.Replace("'", "''")
+                    );
+                }
+            }
+            else
+            {
+                dataView.RowFilter = string.Empty;
+            }
         }
     }
 }

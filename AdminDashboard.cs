@@ -34,6 +34,7 @@ namespace RegistrationForm
         public AdminDashboard()
         {
             InitializeComponent();
+            lblName.Text = User.Name;
         }
 
         

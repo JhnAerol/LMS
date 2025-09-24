@@ -136,6 +136,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -147,6 +148,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDashvoardMdiPages\LogsFolder\Log.cs" />
     <Compile Include="AdminDashvoardMdiPages\Students\AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,10 +161,10 @@
     <Compile Include="AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Logs.cs">
+    <Compile Include="AdminDashvoardMdiPages\LogsFolder\Logs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Logs.Designer.cs">
+    <Compile Include="AdminDashvoardMdiPages\LogsFolder\Logs.Designer.cs">
       <DependentUpon>Logs.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminDashvoardMdiPages\Reports.cs">
@@ -180,12 +182,7 @@
     <Compile Include="AdminDashvoardMdiPages\Students\StudentList.Designer.cs">
       <DependentUpon>StudentList.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Subjects\AddSubject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Subjects\AddSubject.Designer.cs">
-      <DependentUpon>AddSubject.cs</DependentUpon>
-    </Compile>
+    <Compile Include="AdminDashvoardMdiPages\Subjects\SubjectData\AvTeacherModel.cs" />
     <Compile Include="AdminDashvoardMdiPages\Subjects\SubjectData\StudentInSubjectModel.cs" />
     <Compile Include="AdminDashvoardMdiPages\Subjects\SubjectData\SubjectModel.cs" />
     <Compile Include="AdminDashvoardMdiPages\Subjects\SubjectData\SubjectRepos.cs" />
@@ -250,13 +247,14 @@
     <Compile Include="TeacherDashboard.Designer.cs">
       <DependentUpon>TeacherDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="AdminDashvoardMdiPages\Students\AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminDashvoardMdiPages\Logs.resx">
+    <EmbeddedResource Include="AdminDashvoardMdiPages\LogsFolder\Logs.resx">
       <DependentUpon>Logs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashvoardMdiPages\Reports.resx">
@@ -264,9 +262,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashvoardMdiPages\Students\StudentList.resx">
       <DependentUpon>StudentList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminDashvoardMdiPages\Subjects\AddSubject.resx">
-      <DependentUpon>AddSubject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashvoardMdiPages\Subjects\Subjects.resx">
       <DependentUpon>Subjects.cs</DependentUpon>
@@ -328,6 +323,11 @@
   <ItemGroup>
     <None Include="Resources\burger-bar.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\pic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

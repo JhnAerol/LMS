@@ -14,9 +14,9 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
     {
         string connectionString = ConnectionString.conn;
 
-        public List<SubjectModel> GetAvailableTeacher()
+        public List<AvTeacherModel> GetAvailableTeacher(int departmentId)
         {
-            var avTeacher = new List<SubjectModel>();
+            var avTeacher = new List<AvTeacherModel>();
 
             try
             {
@@ -27,19 +27,16 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
                     SqlCommand cmd = new SqlCommand("SP_GetAvTeacher", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.AddWithValue("@DepartmentID", departmentId);
+
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        //var schema = reader.GetSchemaTable();
-                        //foreach (DataRow row in schema.Rows)
-                        //{
-                        //    MessageBox.Show($"{row["ColumnName"]} - {row["DataType"]}");
-                        //}
+                        AvTeacherModel avTeachers = new AvTeacherModel();
 
-                        SubjectModel avTeachers = new SubjectModel();
-
-                        avTeachers.FullName = reader.GetString(0);
+                        avTeachers.Name = reader.GetString(0);      
+                        avTeachers.Department = reader.GetString(1); 
 
                         avTeacher.Add(avTeachers);
                     }
@@ -47,7 +44,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exceptioon: " + ex.Message);
+                MessageBox.Show("Exception: " + ex.Message);
             }
 
             return avTeacher;
@@ -63,13 +60,19 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
                 {
                     connection.Open();
 
-                    SqlCommand cmd = new SqlCommand("SP_AddCourse", connection);
+                    SqlCommand cmd = new SqlCommand("SP_GetCourses", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
+
+                        //var schema = reader.GetSchemaTable();
+                        //foreach (DataRow row in schema.Rows)
+                        //{
+                        //    MessageBox.Show($"{row["ColumnName"]} - {row["DataType"]}");
+                        //}
 
                         SubjectModel subject = new SubjectModel();
 
@@ -78,6 +81,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
                         subject.CourseCode = reader.GetString(2);
                         subject.Description = reader.GetString(3);
                         subject.Credits = Convert.ToDouble(reader.GetDecimal(4));
+                        subject.Status = reader.GetString(5);
 
                         subjects.Add(subject);
                     }
@@ -164,7 +168,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
             return subsutdents;
         }
 
-        public void UpdateSubject(int id, string courseName, string courseCode, string description, int creadits )
+        public void UpdateSubject(int id, string courseName, string courseCode, string description, int creadits, string status )
         {
             try
             {
@@ -172,7 +176,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
                 {
                     connection.Open();
 
-                    SqlCommand cmd = new SqlCommand("SP_UpdateTeacher", connection);
+                    SqlCommand cmd = new SqlCommand("SP_UpdateCourse", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("CourseID", id);
@@ -180,6 +184,35 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
                     cmd.Parameters.AddWithValue("CourseCode", courseCode);
                     cmd.Parameters.AddWithValue("Description", description);
                     cmd.Parameters.AddWithValue("Credits", creadits);
+                    cmd.Parameters.AddWithValue("Status", status);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exceptioon: " + ex.Message);
+            }
+        }
+
+        public void AddSubject(string courseName, string courseCode, string description, int creadits, string teachername, string departmentname, string status)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand("SP_AddCourses", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("CourseName", courseName);
+                    cmd.Parameters.AddWithValue("CourseCode", courseCode);
+                    cmd.Parameters.AddWithValue("Description", description);
+                    cmd.Parameters.AddWithValue("Credits", creadits);
+                    cmd.Parameters.AddWithValue("TeacherName", teachername);
+                    cmd.Parameters.AddWithValue("DepartmentName ", departmentname);
+                    cmd.Parameters.AddWithValue("Status", status);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                 }

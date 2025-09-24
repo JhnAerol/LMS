@@ -14,6 +14,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
         public string CourseCode { get; set; }
         public string Description { get; set; }
         public double Credits { get; set; }
+        public string Status { get; set; }
         public int TeacherID { get; set; }
         public int DepartmentID { get; set; }
 

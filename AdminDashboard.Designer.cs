@@ -31,9 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSidebar = new System.Windows.Forms.PictureBox();
+            this.lblName = new System.Windows.Forms.Label();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnStatistics = new System.Windows.Forms.Button();
             this.TeacherBar = new System.Windows.Forms.Panel();
             this.btnTeacherList = new System.Windows.Forms.Button();
@@ -50,12 +49,14 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSidebar = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSidebar)).BeginInit();
             this.sidebar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TeacherBar.SuspendLayout();
             this.StudentBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSidebar)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -72,6 +73,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.btnSidebar);
+            this.panel1.Controls.Add(this.lblName);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -80,17 +82,19 @@
             this.panel1.Size = new System.Drawing.Size(1469, 53);
             this.panel1.TabIndex = 12;
             // 
-            // btnSidebar
+            // lblName
             // 
-            this.btnSidebar.Image = global::RegistrationForm.Properties.Resources.burger_bar;
-            this.btnSidebar.Location = new System.Drawing.Point(15, 6);
-            this.btnSidebar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSidebar.Name = "btnSidebar";
-            this.btnSidebar.Size = new System.Drawing.Size(52, 42);
-            this.btnSidebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnSidebar.TabIndex = 8;
-            this.btnSidebar.TabStop = false;
-            this.btnSidebar.Click += new System.EventHandler(this.btnSidebar_Click);
+            this.lblName.AutoSize = true;
+            this.lblName.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblName.Font = new System.Drawing.Font("Lucida Sans", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(1391, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Padding = new System.Windows.Forms.Padding(0, 16, 13, 0);
+            this.lblName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblName.Size = new System.Drawing.Size(78, 37);
+            this.lblName.TabIndex = 15;
+            this.lblName.Text = "label1";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // sidebar
             // 
@@ -109,16 +113,6 @@
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(285, 797);
             this.sidebar.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(76, 37);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(76, 37, 4, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 107);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btnStatistics
             // 
@@ -282,6 +276,30 @@
             this.timer3.Interval = 10;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = global::RegistrationForm.Properties.Resources.pic1;
+            this.pictureBox1.Location = new System.Drawing.Point(76, 37);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(76, 37, 4, 40);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(133, 107);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnSidebar
+            // 
+            this.btnSidebar.Image = global::RegistrationForm.Properties.Resources.burger_bar;
+            this.btnSidebar.Location = new System.Drawing.Point(15, 6);
+            this.btnSidebar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSidebar.Name = "btnSidebar";
+            this.btnSidebar.Size = new System.Drawing.Size(52, 42);
+            this.btnSidebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnSidebar.TabIndex = 8;
+            this.btnSidebar.TabStop = false;
+            this.btnSidebar.Click += new System.EventHandler(this.btnSidebar_Click);
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -298,11 +316,11 @@
             this.Text = "AdminDashboard";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSidebar)).EndInit();
             this.sidebar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TeacherBar.ResumeLayout(false);
             this.StudentBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSidebar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,5 +347,6 @@
         private System.Windows.Forms.Button btnTeacherList;
         private System.Windows.Forms.Button btnTeacherBar;
         private System.Windows.Forms.Timer timer3;
+        public System.Windows.Forms.Label lblName;
     }
 }

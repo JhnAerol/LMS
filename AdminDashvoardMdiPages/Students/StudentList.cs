@@ -5,6 +5,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using RegistrationForm.AdminDashvoardMdiPages.LogsFolder;
 using RegistrationForm.AdminDashvoardMdiPages.Students.StudentData;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
         StudentRepos repos = new StudentRepos();
         DataTable activeStudents;
         DataTable coursesAndTeacher;
+        DataTable dt;
 
         public StudentList()
         {
@@ -43,7 +45,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
 
         public void ReadStudents()
         {
-            DataTable dt = new DataTable();
+            dt = new DataTable();
 
             dt.Columns.Add("ID");
             dt.Columns.Add("Enrollment Date");
@@ -78,7 +80,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
                 dt.Rows.Add(row);
             }
 
-            dgvStudents.DataSource = dt;
+            
         }
 
         public void ReadActiveStudents()
@@ -117,6 +119,8 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
 
                 activeStudents.Rows.Add(row);
             }
+
+            dgvStudents.DataSource = activeStudents;
         }
 
         public void ReadStudentCoursesAndTeacher(int r)
@@ -155,6 +159,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
                 repos.DeleteStudent(id);
                 MessageBox.Show("Delete Completed", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ReadStudents();
+                Log.Logss(User.Name, "Deleting Student");
             }
             else
             {
@@ -185,6 +190,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
                 MessageBox.Show("Update Completed", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ReadStudents();
                 ReadActiveStudents();
+                Log.Logss(User.Name, "Updating Student");
             }
             else
             {
@@ -353,6 +359,37 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
             int id = Convert.ToInt32(dgvStudents.Rows[r].Cells[0].Value);
 
             ReadStudentCoursesAndTeacher(id);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = txtSearch.Text.Trim();
+            DataView dataView = activeStudents.DefaultView;
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                if (filterText.Equals("Male", StringComparison.OrdinalIgnoreCase) ||
+                    filterText.Equals("Female", StringComparison.OrdinalIgnoreCase))
+                {
+                    dataView.RowFilter = $"[Gender] = '{filterText.Replace("'", "''")}'";
+                }
+                else
+                {
+                    dataView.RowFilter = string.Format(
+                        "[First Name] LIKE '%{0}%' OR " +
+                        "[Last Name] LIKE '%{0}%' OR " +
+                        "Convert([Age], 'System.String') LIKE '%{0}%' OR " +
+                        "[Phone] LIKE '%{0}%' OR " +
+                        "[Email] LIKE '%{0}%' OR " +
+                        "[Address] LIKE '%{0}%'",
+                        filterText.Replace("'", "''")
+                    );
+                }
+            }
+            else
+            {
+                dataView.RowFilter = string.Empty;
+            }
         }
     }
 }

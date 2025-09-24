@@ -6,6 +6,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using RegistrationForm.AdminDashvoardMdiPages.LogsFolder;
 using RegistrationForm.AdminDashvoardMdiPages.Students.StudentData;
 using RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData;
 using System;
@@ -25,6 +26,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
         SubjectRepos repos = new SubjectRepos();
         DataTable allSubjects;
         DataTable studentsInCourse;
+        DataTable dt;
 
         public Subjects()
         {
@@ -44,15 +46,16 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
 
         public void ReadSubjects()
         {
-            DataTable dt = new DataTable();
+            dt = new DataTable();
 
             dt.Columns.Add("ID");
             dt.Columns.Add("Course Name");
             dt.Columns.Add("Course Code");
             dt.Columns.Add("Description");
             dt.Columns.Add("Credits");
+            dt.Columns.Add("Status");
 
-           
+
             var subjects = repos.GetAllSubjects();
 
             foreach (var subject in subjects)
@@ -64,6 +67,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
                 row["Course Code"] = subject.CourseCode;
                 row["Description"] = subject.Description;
                 row["Credits"] = Convert.ToInt32(subject.Credits);
+                row["Status"] = subject.Status;
 
                 dt.Rows.Add(row);
             }
@@ -80,6 +84,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
             allSubjects.Columns.Add("Course Code");
             allSubjects.Columns.Add("Description");
             allSubjects.Columns.Add("Credits");
+            allSubjects.Columns.Add("Status");
 
 
             var subjects = repos.GetAllSubjects();
@@ -93,6 +98,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
                 row["Course Code"] = subject.CourseCode;
                 row["Description"] = subject.Description;
                 row["Credits"] = Convert.ToInt32(subject.Credits);
+                row["Status"] = subject.Status;
 
                 allSubjects.Rows.Add(row);
             }
@@ -137,6 +143,8 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
                 repos.DeleteSubject(id);
                 MessageBox.Show("Delete Completed", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ReadSubjects();
+                ReadAllSubjects();
+                Log.Logss(User.Name, "Deleting Subject");
             }
             else
             {
@@ -153,14 +161,16 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
             string courseCode = dgvSubjects.Rows[r].Cells[2].Value.ToString();
             string description = dgvSubjects.Rows[r].Cells[3].Value.ToString();
             int credits = Convert.ToInt32(dgvSubjects.Rows[r].Cells[4].Value.ToString());
+            string status = dgvSubjects.Rows[r].Cells[5].Value.ToString();
 
             DialogResult dr = MessageBox.Show("Are you sure you want to update this student ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)
             {
-                repos.UpdateSubject(id, courseName, courseCode, description, credits);
+                repos.UpdateSubject(id, courseName, courseCode, description, credits, status);
                 MessageBox.Show("Update Completed", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ReadSubjects();
                 ReadAllSubjects();
+                Log.Logss(User.Name, "Updating Subject");
             }
             else
             {
@@ -315,6 +325,83 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
             int id = Convert.ToInt32(dgvSubjects.Rows[r].Cells[0].Value);
 
             ReadStudentsInCourse(id);
+        }
+
+        public void DisplayAvTeacher(int index)
+        {
+            var display = repos.GetAvailableTeacher(index);
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Department");
+
+            foreach (var avTeacher in display)
+            {
+                //MessageBox.Show($"{avTeacher.Name} - {avTeacher.Department}");
+
+                var row = dt.NewRow();
+
+                row["Name"] = avTeacher.Name;
+                row["Department"] = avTeacher.Department;
+
+                dt.Rows.Add(row);
+
+            }
+
+            cmbAvTeacher.DataSource = dt;
+            cmbAvTeacher.DisplayMember = "Name";
+
+        }
+
+        private void cmbDept_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int ind = cmbDept.SelectedIndex + 1;
+
+            DisplayAvTeacher(ind);
+        }
+
+        private void btnAddSubject_Click(object sender, EventArgs e)
+        {
+            panel3.Visible = true;
+            panel1.Visible = false;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            panel3.Visible = false;
+            panel1.Visible = true;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = txtSearch.Text.Trim();
+            DataView dataView = dt.DefaultView;
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                dataView.RowFilter = string.Format(
+                    "[Course Name] LIKE '%{0}%' OR " +
+                    "[Course Code] LIKE '%{0}%' OR " +
+                    "[Description] LIKE '%{0}%'",
+                    filterText.Replace("'", "''")
+                );
+            }
+            else
+            {
+                dataView.RowFilter = string.Empty; // Clear filter
+            }
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            repos.AddSubject(txtCourseName.Text, txtCourseCode.Text, txtDescription.Text, Convert.ToInt32(txtCredits.Text), cmbAvTeacher.Text, cmbDept.Text, cmbStatus.Text);
+
+            ReadSubjects();
+            ReadAllSubjects();
+
+            MessageBox.Show("Added Successfully", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Log.Logss(User.Name, "Adding Subject");
         }
     }
 }

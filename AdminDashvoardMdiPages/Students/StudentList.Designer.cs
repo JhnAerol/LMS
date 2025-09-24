@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrintCoursesAndTeacher = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
-            this.btnPrintCoursesAndTeacher = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +55,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1091, 734);
             this.panel1.TabIndex = 4;
+            // 
+            // btnPrintCoursesAndTeacher
+            // 
+            this.btnPrintCoursesAndTeacher.Location = new System.Drawing.Point(892, 23);
+            this.btnPrintCoursesAndTeacher.Name = "btnPrintCoursesAndTeacher";
+            this.btnPrintCoursesAndTeacher.Size = new System.Drawing.Size(136, 49);
+            this.btnPrintCoursesAndTeacher.TabIndex = 13;
+            this.btnPrintCoursesAndTeacher.Text = "PRINT COURSES AND TEACHER";
+            this.btnPrintCoursesAndTeacher.UseVisualStyleBackColor = true;
+            this.btnPrintCoursesAndTeacher.Click += new System.EventHandler(this.btnPrintCoursesAndTeacher_Click);
             // 
             // btnPrint
             // 
@@ -92,6 +102,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(195, 22);
             this.txtSearch.TabIndex = 2;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
             // 
@@ -117,16 +128,6 @@
             this.dgvStudents.Size = new System.Drawing.Size(1062, 621);
             this.dgvStudents.TabIndex = 0;
             this.dgvStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellClick);
-            // 
-            // btnPrintCoursesAndTeacher
-            // 
-            this.btnPrintCoursesAndTeacher.Location = new System.Drawing.Point(892, 23);
-            this.btnPrintCoursesAndTeacher.Name = "btnPrintCoursesAndTeacher";
-            this.btnPrintCoursesAndTeacher.Size = new System.Drawing.Size(136, 49);
-            this.btnPrintCoursesAndTeacher.TabIndex = 13;
-            this.btnPrintCoursesAndTeacher.Text = "PRINT COURSES AND TEACHER";
-            this.btnPrintCoursesAndTeacher.UseVisualStyleBackColor = true;
-            this.btnPrintCoursesAndTeacher.Click += new System.EventHandler(this.btnPrintCoursesAndTeacher_Click);
             // 
             // StudentList
             // 

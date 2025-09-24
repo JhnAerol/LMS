@@ -93,6 +93,9 @@ CREATE TABLE Enrollments (
 	FOREIGN KEY (SemesterID) REFERENCES Semesters(SemesterID)
 )
 
+ALTER TABLE Courses
+ADD Status NVARCHAR(50)
+
 
 INSERT INTO Roles (RoleCode, RoleName)
 VALUES 
@@ -153,6 +156,19 @@ UPDATE Enrollments
 SET CourseID = 4
 WHERE EnrollmentID = 1004
 
+UPDATE Courses
+Set TeacherID = NULL
+WHERE CourseID = 1
+
+UPDATE Students
+SET EnrollmentDate = '2024-09-17 00:44:59.000'
+WHERE StudentID = 1035
+        AND StudentID = 1007
+        AND StudentID = 1009
+        AND StudentID = 1013
+        AND StudentID = 1027
+        AND StudentID = 1035
+
 SELECT * FROM Departments
 SELECT * FROM Semesters
 SELECT * FROM Courses
@@ -162,6 +178,12 @@ SELECT * FROM Users
 SELECT * FROM Enrollments
 SELECT * FROM Students
 SELECT * FROM Roles
+SELECT * FROM Logs
+
+UPDATE Courses
+SET Status = 'Active'
+
+ EXEC sp_rename 'dbo.SP_AddCourse', 'SP_GetCourses';
 
 DROP TABLE Roles
 DROP TABLE Users
@@ -480,4 +502,99 @@ BEGIN
     INNER JOIN Teachers t ON c.TeacherID = t.TeacherID
     INNER JOIN Profiles tp ON t.ProfileID = tp.ProfileID
     WHERE s.StudentID = @StudentID
+END
+
+CREATE PROC SP_CountActiveAndInactive
+AS
+BEGIN
+    SELECT
+        SUM(CASE WHEN Status = 'Active' THEN 1 ELSE 0 END) AS ActiveStudents,
+        SUM(CASE WHEN Status = 'Inactive' THEN 1 ELSE 0 END) AS InactiveStudents
+    FROM
+        Profiles
+    WHERE LEFT(RoleCodeNumber,2) = 'ST'
+END
+
+ALTER PROC SP_CountActiveAndInactiveTeaacher
+AS
+BEGIN
+    SELECT
+        SUM(CASE WHEN Status = 'Active' THEN 1 ELSE 0 END) AS ActiveTeachers,
+        SUM(CASE WHEN Status = 'Inactive' THEN 1 ELSE 0 END) AS InactiveTeachers
+    FROM
+        Profiles
+    WHERE LEFT(RoleCodeNumber,2) = 'TH'
+END
+
+A PROC SP_CountActiveAndInactiveSubject
+AS
+BEGIN
+    SELECT
+        SUM(CASE WHEN Status = 'Active' THEN 1 ELSE 0 END) AS ActiveSubjects,
+        SUM(CASE WHEN Status = 'Inactive' THEN 1 ELSE 0 END) AS InactiveSubjects
+    FROM
+        Courses
+END
+
+UPDATE Profiles
+SET Status = 'Inactive'
+WHERE ProfileID = 1019
+
+CREATE PROC SP_AddCourses
+    @CourseName NVARCHAR(100),
+    @CourseCode NVARCHAR(100),
+    @Description NVARCHAR(100),
+    @Credits DECIMAL(5,2),
+    @TeacherID INT NULL,
+    @DepartmentID INT,
+    @Status NVARCHAR(50)
+AS
+BEGIN
+    INSERT INTO Courses(CourseName, CourseCode, Description, Credits, TeacherID, DepartmentID, Status)
+    VALUES (@CourseName, @CourseCode, @Description, @Credits, @TeacherID, @DepartmentID, @Status)
+END
+
+CREATE PROC SP_StudentEnrollmentPerYear
+AS
+BEGIN
+    SELECT 
+        YEAR(EnrollmentDate) AS EnrollmentYear,
+        COUNT(*) AS StudentCount
+    FROM Students
+    GROUP BY YEAR(EnrollmentDate)
+    ORDER BY EnrollmentYear;
+END
+
+CREATE TABLE Logs (
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Message NVARCHAR(MAX) NOT NULL,
+    LogDate DATE NOT NULL,
+    LogTime TIME NOT NULL
+)
+
+CREATE PROC SP_InsertLog
+    @Name NVARCHAR(100),
+    @Message NVARCHAR(MAX)
+AS
+BEGIN
+    SET NOCOUNT ON
+
+    INSERT INTO Logs (Name, Message, LogDate, LogTime)
+    VALUES (@Name, @Message, CAST(GETDATE() AS DATE), CAST(GETDATE() AS TIME))
+END
+
+CREATE PROC SP_GetLogs
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        LogID,
+        Name,
+        Message,
+        CONVERT(VARCHAR(10), LogDate, 120) AS LogDate, 
+        CONVERT(VARCHAR(8), LogTime, 108) AS LogTime  
+    FROM Logs
+    ORDER BY LogID DESC
 END

@@ -1,4 +1,5 @@
-﻿using RegistrationForm.Connection;
+﻿using RegistrationForm.AdminDashvoardMdiPages.LogsFolder;
+using RegistrationForm.Connection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,6 +82,7 @@ namespace RegistrationForm
 
                             conn.Open();
                             cmd.ExecuteNonQuery();
+                            Log.Logss(User.Name, "Adding Student");
 
                             MessageBox.Show("Registration Done!");
                             new LoginForm().Show();

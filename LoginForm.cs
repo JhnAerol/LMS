@@ -14,9 +14,11 @@ namespace RegistrationForm
 {
     public partial class LoginForm : Form
     {
+        AdminDashboard admin;
         public LoginForm()
         {
             InitializeComponent();
+            admin = new AdminDashboard();
         }
 
         string Connectionstring = ConnectionString.conn;
@@ -71,6 +73,8 @@ namespace RegistrationForm
 
                             string message = reader["Message"].ToString();
                             string role = reader["RoleCode"].ToString();
+                            User.Name = reader["FullName"].ToString();
+                            
                             MessageBox.Show(message, "Login Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             if (message == "Login Successful")
