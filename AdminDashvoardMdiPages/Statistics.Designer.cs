@@ -55,14 +55,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackgroundImage = global::RegistrationForm.Properties.Resources.bg;
             this.panel1.Controls.Add(this.chartEnrollment);
             this.panel1.Controls.Add(this.chart3);
             this.panel1.Controls.Add(this.chart2);
             this.panel1.Controls.Add(this.chart1);
-            this.panel1.Location = new System.Drawing.Point(49, 32);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(37, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1091, 734);
+            this.panel1.Size = new System.Drawing.Size(818, 596);
             this.panel1.TabIndex = 2;
             // 
             // chartEnrollment
@@ -71,13 +71,14 @@
             this.chartEnrollment.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartEnrollment.Legends.Add(legend1);
-            this.chartEnrollment.Location = new System.Drawing.Point(24, 355);
+            this.chartEnrollment.Location = new System.Drawing.Point(18, 288);
+            this.chartEnrollment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chartEnrollment.Name = "chartEnrollment";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartEnrollment.Series.Add(series1);
-            this.chartEnrollment.Size = new System.Drawing.Size(1037, 350);
+            this.chartEnrollment.Size = new System.Drawing.Size(778, 284);
             this.chartEnrollment.TabIndex = 3;
             // 
             // chart3
@@ -86,13 +87,14 @@
             this.chart3.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart3.Legends.Add(legend2);
-            this.chart3.Location = new System.Drawing.Point(755, 22);
+            this.chart3.Location = new System.Drawing.Point(566, 18);
+            this.chart3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chart3.Name = "chart3";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart3.Series.Add(series2);
-            this.chart3.Size = new System.Drawing.Size(306, 269);
+            this.chart3.Size = new System.Drawing.Size(230, 219);
             this.chart3.TabIndex = 2;
             this.chart3.Text = "chart3";
             // 
@@ -102,13 +104,14 @@
             this.chart2.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chart2.Legends.Add(legend3);
-            this.chart2.Location = new System.Drawing.Point(392, 22);
+            this.chart2.Location = new System.Drawing.Point(294, 18);
+            this.chart2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chart2.Name = "chart2";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chart2.Series.Add(series3);
-            this.chart2.Size = new System.Drawing.Size(306, 269);
+            this.chart2.Size = new System.Drawing.Size(230, 219);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
@@ -118,23 +121,25 @@
             this.chart1.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
             this.chart1.Legends.Add(legend4);
-            this.chart1.Location = new System.Drawing.Point(24, 22);
+            this.chart1.Location = new System.Drawing.Point(18, 18);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chart1.Name = "chart1";
             series4.ChartArea = "ChartArea1";
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(313, 269);
+            this.chart1.Size = new System.Drawing.Size(235, 219);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // Statistics
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 798);
+            this.ClientSize = new System.Drawing.Size(891, 648);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Statistics";
             this.Text = "Statistics";
             this.Resize += new System.EventHandler(this.Statistics_Resize);

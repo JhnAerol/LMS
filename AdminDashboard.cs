@@ -22,7 +22,6 @@ namespace RegistrationForm
         Statistics statistics;
         AddTeacher addteacher;
         Subjects subjects;
-        Reports reports;
         Logs logs;
         StudentList studentList;
         TeacherList teacherList;
@@ -196,27 +195,6 @@ namespace RegistrationForm
         private void Subjects_FormClosed(object sender, FormClosedEventArgs e)
         {
             subjects = null;
-        }
-
-        private void tbnReports_Click(object sender, EventArgs e)
-        {
-            if (reports == null)
-            {
-                reports = new Reports();
-                reports.FormClosed += Reports_FormClosed;
-                reports.MdiParent = this;
-                reports.Dock = DockStyle.Fill;
-                reports.Show();
-            }
-            else
-            {
-                reports.Activate();
-            }
-        }
-
-        private void Reports_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            reports = null;
         }
 
         private void btnLogs_Click(object sender, EventArgs e)

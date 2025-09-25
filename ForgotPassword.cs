@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationForm.Connection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,11 +19,11 @@ namespace RegistrationForm
             InitializeComponent();
         }
 
-        string ConnectionString = @"Data Source=DESKTOP-H4JIUJU\SQLEXPRESS;Initial Catalog=Proel2D;Integrated Security=True";
+        string connectionString = ConnectionString.conn;
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn  = new SqlConnection(ConnectionString))
+            using (SqlConnection conn  = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("SP_ForgotPassword", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -47,6 +48,12 @@ namespace RegistrationForm
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            new LoginForm().Show();
+            this.Hide();
         }
     }
 }

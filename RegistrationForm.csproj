@@ -167,12 +167,6 @@
     <Compile Include="AdminDashvoardMdiPages\LogsFolder\Logs.Designer.cs">
       <DependentUpon>Logs.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Reports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminDashvoardMdiPages\Reports.Designer.cs">
-      <DependentUpon>Reports.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminDashvoardMdiPages\Students\StudentData\StudentCoursesAndTeacherModel.cs" />
     <Compile Include="AdminDashvoardMdiPages\Students\StudentData\StudentModel.cs" />
     <Compile Include="AdminDashvoardMdiPages\Students\StudentData\StudentRepos.cs" />
@@ -215,12 +209,6 @@
       <DependentUpon>AddTeacher.cs</DependentUpon>
     </Compile>
     <Compile Include="PasswordEncryption.cs" />
-    <Compile Include="RegisterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,9 +245,6 @@
     <EmbeddedResource Include="AdminDashvoardMdiPages\LogsFolder\Logs.resx">
       <DependentUpon>Logs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminDashvoardMdiPages\Reports.resx">
-      <DependentUpon>Reports.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminDashvoardMdiPages\Students\StudentList.resx">
       <DependentUpon>StudentList.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,9 +259,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashvoardMdiPages\Teacher\AddTeacher.resx">
       <DependentUpon>AddTeacher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForm.resx">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -328,6 +310,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pic1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FORGOT PASSWORD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGIN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ADD SUBJECT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ADD STUDENT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ADD TEACHER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

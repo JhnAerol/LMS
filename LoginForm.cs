@@ -72,13 +72,16 @@ namespace RegistrationForm
                             //}
 
                             string message = reader["Message"].ToString();
-                            string role = reader["RoleCode"].ToString();
-                            User.Name = reader["FullName"].ToString();
+                            
+                            
                             
                             MessageBox.Show(message, "Login Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
                             if (message == "Login Successful")
                             {
+                                string role = reader["RoleCode"].ToString();
+                                User.Name = reader["FullName"].ToString();
                                 if (role == "AD")
                                 {
                                     this.Hide();
@@ -142,7 +145,7 @@ namespace RegistrationForm
         private void btnRegister_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new RegisterForm().Show();
+            new ForgotPassword().Show();
         }
     }
 }

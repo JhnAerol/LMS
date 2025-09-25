@@ -43,7 +43,6 @@
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.btnStudentBar = new System.Windows.Forms.Button();
             this.btnSubjects = new System.Windows.Forms.Button();
-            this.tbnReports = new System.Windows.Forms.Button();
             this.btnLogs = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -63,9 +62,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(75, 14);
+            this.label12.Location = new System.Drawing.Point(56, 11);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(233, 27);
+            this.label12.Size = new System.Drawing.Size(191, 22);
             this.label12.TabIndex = 7;
             this.label12.Text = "Admin Dashboard";
             // 
@@ -77,9 +77,8 @@
             this.panel1.Controls.Add(this.label12);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1469, 53);
+            this.panel1.Size = new System.Drawing.Size(1102, 43);
             this.panel1.TabIndex = 12;
             // 
             // lblName
@@ -87,40 +86,38 @@
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblName.Font = new System.Drawing.Font("Lucida Sans", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(1391, 0);
+            this.lblName.Location = new System.Drawing.Point(1039, 0);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Padding = new System.Windows.Forms.Padding(0, 16, 13, 0);
+            this.lblName.Padding = new System.Windows.Forms.Padding(0, 13, 10, 0);
             this.lblName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblName.Size = new System.Drawing.Size(78, 37);
+            this.lblName.Size = new System.Drawing.Size(63, 30);
             this.lblName.TabIndex = 15;
             this.lblName.Text = "label1";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // sidebar
             // 
-            this.sidebar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.sidebar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.sidebar.Controls.Add(this.pictureBox1);
             this.sidebar.Controls.Add(this.btnStatistics);
             this.sidebar.Controls.Add(this.TeacherBar);
             this.sidebar.Controls.Add(this.StudentBar);
             this.sidebar.Controls.Add(this.btnSubjects);
-            this.sidebar.Controls.Add(this.tbnReports);
             this.sidebar.Controls.Add(this.btnLogs);
             this.sidebar.Controls.Add(this.btnLogout);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar.Location = new System.Drawing.Point(0, 53);
-            this.sidebar.Margin = new System.Windows.Forms.Padding(4);
+            this.sidebar.Location = new System.Drawing.Point(0, 43);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(285, 797);
+            this.sidebar.Size = new System.Drawing.Size(214, 648);
             this.sidebar.TabIndex = 13;
             // 
             // btnStatistics
             // 
             this.btnStatistics.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnStatistics.Location = new System.Drawing.Point(4, 188);
-            this.btnStatistics.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStatistics.Location = new System.Drawing.Point(3, 152);
             this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(281, 50);
+            this.btnStatistics.Size = new System.Drawing.Size(211, 41);
             this.btnStatistics.TabIndex = 18;
             this.btnStatistics.Text = "Statistics";
             this.btnStatistics.UseVisualStyleBackColor = false;
@@ -131,17 +128,17 @@
             this.TeacherBar.Controls.Add(this.btnTeacherList);
             this.TeacherBar.Controls.Add(this.btnTeacherBar);
             this.TeacherBar.Controls.Add(this.btnAddTeacher);
-            this.TeacherBar.Location = new System.Drawing.Point(3, 245);
+            this.TeacherBar.Location = new System.Drawing.Point(2, 198);
+            this.TeacherBar.Margin = new System.Windows.Forms.Padding(2);
             this.TeacherBar.Name = "TeacherBar";
-            this.TeacherBar.Size = new System.Drawing.Size(281, 50);
+            this.TeacherBar.Size = new System.Drawing.Size(211, 41);
             this.TeacherBar.TabIndex = 17;
             // 
             // btnTeacherList
             // 
-            this.btnTeacherList.Location = new System.Drawing.Point(0, 104);
-            this.btnTeacherList.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTeacherList.Location = new System.Drawing.Point(0, 84);
             this.btnTeacherList.Name = "btnTeacherList";
-            this.btnTeacherList.Size = new System.Drawing.Size(281, 50);
+            this.btnTeacherList.Size = new System.Drawing.Size(211, 41);
             this.btnTeacherList.TabIndex = 17;
             this.btnTeacherList.Text = "Teacher List";
             this.btnTeacherList.UseVisualStyleBackColor = true;
@@ -151,9 +148,8 @@
             // 
             this.btnTeacherBar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTeacherBar.Location = new System.Drawing.Point(0, 2);
-            this.btnTeacherBar.Margin = new System.Windows.Forms.Padding(4);
             this.btnTeacherBar.Name = "btnTeacherBar";
-            this.btnTeacherBar.Size = new System.Drawing.Size(281, 50);
+            this.btnTeacherBar.Size = new System.Drawing.Size(211, 41);
             this.btnTeacherBar.TabIndex = 15;
             this.btnTeacherBar.Text = "Teachers";
             this.btnTeacherBar.UseVisualStyleBackColor = false;
@@ -161,10 +157,9 @@
             // 
             // btnAddTeacher
             // 
-            this.btnAddTeacher.Location = new System.Drawing.Point(0, 53);
-            this.btnAddTeacher.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddTeacher.Location = new System.Drawing.Point(0, 43);
             this.btnAddTeacher.Name = "btnAddTeacher";
-            this.btnAddTeacher.Size = new System.Drawing.Size(281, 50);
+            this.btnAddTeacher.Size = new System.Drawing.Size(211, 41);
             this.btnAddTeacher.TabIndex = 16;
             this.btnAddTeacher.Text = "Add Teacher";
             this.btnAddTeacher.UseVisualStyleBackColor = true;
@@ -175,17 +170,17 @@
             this.StudentBar.Controls.Add(this.btnStudentList);
             this.StudentBar.Controls.Add(this.btnAddStudent);
             this.StudentBar.Controls.Add(this.btnStudentBar);
-            this.StudentBar.Location = new System.Drawing.Point(3, 301);
+            this.StudentBar.Location = new System.Drawing.Point(2, 243);
+            this.StudentBar.Margin = new System.Windows.Forms.Padding(2);
             this.StudentBar.Name = "StudentBar";
-            this.StudentBar.Size = new System.Drawing.Size(281, 50);
+            this.StudentBar.Size = new System.Drawing.Size(211, 41);
             this.StudentBar.TabIndex = 15;
             // 
             // btnStudentList
             // 
-            this.btnStudentList.Location = new System.Drawing.Point(0, 104);
-            this.btnStudentList.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStudentList.Location = new System.Drawing.Point(0, 84);
             this.btnStudentList.Name = "btnStudentList";
-            this.btnStudentList.Size = new System.Drawing.Size(281, 50);
+            this.btnStudentList.Size = new System.Drawing.Size(211, 41);
             this.btnStudentList.TabIndex = 17;
             this.btnStudentList.Text = "Student List";
             this.btnStudentList.UseVisualStyleBackColor = true;
@@ -193,10 +188,9 @@
             // 
             // btnAddStudent
             // 
-            this.btnAddStudent.Location = new System.Drawing.Point(0, 53);
-            this.btnAddStudent.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddStudent.Location = new System.Drawing.Point(0, 43);
             this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(281, 50);
+            this.btnAddStudent.Size = new System.Drawing.Size(211, 41);
             this.btnAddStudent.TabIndex = 16;
             this.btnAddStudent.Text = "Add Student";
             this.btnAddStudent.UseVisualStyleBackColor = true;
@@ -206,9 +200,8 @@
             // 
             this.btnStudentBar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnStudentBar.Location = new System.Drawing.Point(0, 2);
-            this.btnStudentBar.Margin = new System.Windows.Forms.Padding(4);
             this.btnStudentBar.Name = "btnStudentBar";
-            this.btnStudentBar.Size = new System.Drawing.Size(281, 50);
+            this.btnStudentBar.Size = new System.Drawing.Size(211, 41);
             this.btnStudentBar.TabIndex = 15;
             this.btnStudentBar.Text = "Students";
             this.btnStudentBar.UseVisualStyleBackColor = false;
@@ -217,34 +210,20 @@
             // btnSubjects
             // 
             this.btnSubjects.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSubjects.Location = new System.Drawing.Point(4, 358);
-            this.btnSubjects.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSubjects.Location = new System.Drawing.Point(3, 289);
             this.btnSubjects.Name = "btnSubjects";
-            this.btnSubjects.Size = new System.Drawing.Size(281, 50);
+            this.btnSubjects.Size = new System.Drawing.Size(211, 41);
             this.btnSubjects.TabIndex = 17;
             this.btnSubjects.Text = "View Subjects";
             this.btnSubjects.UseVisualStyleBackColor = false;
             this.btnSubjects.Click += new System.EventHandler(this.btnSubjects_Click);
             // 
-            // tbnReports
-            // 
-            this.tbnReports.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbnReports.Location = new System.Drawing.Point(4, 416);
-            this.tbnReports.Margin = new System.Windows.Forms.Padding(4);
-            this.tbnReports.Name = "tbnReports";
-            this.tbnReports.Size = new System.Drawing.Size(281, 50);
-            this.tbnReports.TabIndex = 19;
-            this.tbnReports.Text = "Reports";
-            this.tbnReports.UseVisualStyleBackColor = false;
-            this.tbnReports.Click += new System.EventHandler(this.tbnReports_Click);
-            // 
             // btnLogs
             // 
             this.btnLogs.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLogs.Location = new System.Drawing.Point(4, 474);
-            this.btnLogs.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogs.Location = new System.Drawing.Point(3, 336);
             this.btnLogs.Name = "btnLogs";
-            this.btnLogs.Size = new System.Drawing.Size(281, 50);
+            this.btnLogs.Size = new System.Drawing.Size(211, 41);
             this.btnLogs.TabIndex = 20;
             this.btnLogs.Text = "Logs";
             this.btnLogs.UseVisualStyleBackColor = false;
@@ -253,10 +232,9 @@
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLogout.Location = new System.Drawing.Point(4, 532);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogout.Location = new System.Drawing.Point(3, 383);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(281, 50);
+            this.btnLogout.Size = new System.Drawing.Size(211, 41);
             this.btnLogout.TabIndex = 21;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -280,10 +258,10 @@
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::RegistrationForm.Properties.Resources.pic1;
-            this.pictureBox1.Location = new System.Drawing.Point(76, 37);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(76, 37, 4, 40);
+            this.pictureBox1.Location = new System.Drawing.Point(57, 30);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(57, 30, 3, 32);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 107);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 87);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -291,10 +269,9 @@
             // btnSidebar
             // 
             this.btnSidebar.Image = global::RegistrationForm.Properties.Resources.burger_bar;
-            this.btnSidebar.Location = new System.Drawing.Point(15, 6);
-            this.btnSidebar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSidebar.Location = new System.Drawing.Point(11, 5);
             this.btnSidebar.Name = "btnSidebar";
-            this.btnSidebar.Size = new System.Drawing.Size(52, 42);
+            this.btnSidebar.Size = new System.Drawing.Size(39, 34);
             this.btnSidebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSidebar.TabIndex = 8;
             this.btnSidebar.TabStop = false;
@@ -302,15 +279,15 @@
             // 
             // AdminDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1469, 850);
+            this.ClientSize = new System.Drawing.Size(1102, 691);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboard";
@@ -336,7 +313,6 @@
         private System.Windows.Forms.Button btnStatistics;
         private System.Windows.Forms.Button btnAddTeacher;
         private System.Windows.Forms.Button btnSubjects;
-        private System.Windows.Forms.Button tbnReports;
         private System.Windows.Forms.Button btnLogs;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel StudentBar;
