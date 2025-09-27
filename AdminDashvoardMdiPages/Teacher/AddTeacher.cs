@@ -56,7 +56,7 @@ namespace RegistrationForm.MdiPages
                             cmd.Parameters.AddWithValue("RolePrefix", "TH");
                             cmd.Parameters.AddWithValue("FirstName", txtFirstName.Text);
                             cmd.Parameters.AddWithValue("Address", txtAddress.Text);
-                            cmd.Parameters.AddWithValue("Status", cmbStatus.Text);
+                            cmd.Parameters.AddWithValue("Status", "Active");
                             cmd.Parameters.AddWithValue("Username", TxtUsername.Text);
                             cmd.Parameters.AddWithValue("Password", hashpassword);
                             cmd.Parameters.AddWithValue("Email", txtEmail.Text);
@@ -83,8 +83,7 @@ namespace RegistrationForm.MdiPages
                             cmd.ExecuteNonQuery();
                             Log.Logss(User.Name, "Adding Teacher");
 
-                            MessageBox.Show("Registration Done!");
-                            new LoginForm().Show();
+                            MessageBox.Show("Registration Done!", "Successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     break;

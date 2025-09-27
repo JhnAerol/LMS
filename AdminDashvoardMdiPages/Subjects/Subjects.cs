@@ -9,10 +9,12 @@ using iText.Layout.Properties;
 using RegistrationForm.AdminDashvoardMdiPages.LogsFolder;
 using RegistrationForm.AdminDashvoardMdiPages.Students.StudentData;
 using RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData;
+using RegistrationForm.Connection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,9 +30,13 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
         DataTable studentsInCourse;
         DataTable dt;
 
+        int r;
+        string courseName;
+
         public Subjects()
         {
             InitializeComponent();
+            dgvSubjects.ClearSelection();
             ReadSubjects();
             ReadAllSubjects();
 
@@ -243,7 +249,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
                 PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
                 PdfFont regularFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
 
-                Paragraph title = new Paragraph($"List of Student In {courseName} Course")
+                Paragraph title = new Paragraph($"List of Student And Teacher for {courseName} Course")
                     .SetFont(boldFont)
                     .SetFontSize(14)
                     .SetTextAlignment(TextAlignment.CENTER);
@@ -351,7 +357,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
 
             cmbAvTeacher.DataSource = dt;
             cmbAvTeacher.DisplayMember = "Name";
-
+            cmbAvTeacher.SelectedItem = null;
         }
 
         private void cmbDept_SelectedIndexChanged(object sender, EventArgs e)
@@ -393,15 +399,102 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
             }
         }
 
+
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            repos.AddSubject(txtCourseName.Text, txtCourseCode.Text, txtDescription.Text, Convert.ToInt32(txtCredits.Text), cmbAvTeacher.Text, cmbDept.Text, cmbStatus.Text);
+            string message = string.Empty;
+            bool isValid = true;
 
-            ReadSubjects();
-            ReadAllSubjects();
+            foreach (Control control in GetAllControls(this))
+            {
+                if (control is TextBox textBox)
+                {
+                    if (string.IsNullOrWhiteSpace(textBox.Text))
+                    {
+                        message += "Credentials must be entered!";
+                        isValid = false;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            repos.AddSubject(txtCourseName.Text, txtCourseCode.Text, txtDescription.Text, Convert.ToInt32(txtCredits.Text), cmbAvTeacher.Text, cmbDept.Text, "Active");
 
-            MessageBox.Show("Added Successfully", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Log.Logss(User.Name, "Adding Subject");
+                            ReadSubjects();
+                            ReadAllSubjects();
+
+                            MessageBox.Show("Added Successfully", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Log.Logss(User.Name, "Adding Subject");
+
+                            txtCourseCode.Clear();
+                            txtDescription.Clear();
+                            txtCredits.Clear();
+                            txtCourseName.Clear();
+                            cmbAvTeacher.SelectedItem = null;
+                            cmbDept.SelectedItem = null;
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                        
+                    }
+                    break;
+                }
+            }
+            if (!isValid)
+            {
+                MessageBox.Show(message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private IEnumerable<Control> GetAllControls(Control container)
+        {
+            foreach (Control ctrl in container.Controls)
+            {
+                foreach (Control child in GetAllControls(ctrl))
+                {
+                    yield return child;
+                }
+                yield return ctrl;
+            }
+        }
+
+        private void dgvSubjects_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            r = dgvSubjects.CurrentCell.RowIndex;
+            courseName = dgvSubjects.Rows[r].Cells[1].Value.ToString();
+
+            lblTitle.Text = $"List of Student and Teacher for {courseName}";
+
+            dgvST.DataSource = studentsInCourse;
+
+            panel1.Visible = false;
+            panel2.Visible = true;
+
+            lblTitle.Left = (panel4.ClientSize.Width - lblTitle.Width) / 2;
+        }
+
+        private void btnBack2_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+            panel1.Visible = true;
+        }
+
+        private void btnPrint2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF files (*.pdf)|*.pdf",
+                FileName = $"StudentsListFor{courseName.Replace(" ", "")}Course.pdf"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExportDataTableToPdfListOfStudentsInSubject(studentsInCourse, saveFileDialog.FileName, courseName);
+                MessageBox.Show("PDF exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

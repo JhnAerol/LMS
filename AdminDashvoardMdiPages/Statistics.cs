@@ -1,4 +1,5 @@
-﻿using RegistrationForm.AdminDashvoardMdiPages.Teacher.TeacherData;
+﻿using iText.Commons.Utils;
+using RegistrationForm.AdminDashvoardMdiPages.Teacher.TeacherData;
 using RegistrationForm.Connection;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace RegistrationForm
             LoadPieChartFromTH();
             LoadPieChartFromSub();
             LoadEnrollmentSplineChart();
+            
         }
  
         private void Statistics_Resize(object sender, EventArgs e)
@@ -57,23 +59,39 @@ namespace RegistrationForm
 
                         chart3.Series.Clear();
 
-                        Series series = new Series("SubjectStatus");
+                        Series series = new Series();
                         series.ChartType = SeriesChartType.Pie;
+
 
                         series.Points.AddXY("Active", activeCount);
                         series.Points.AddXY("Inactive", inactiveCount);
 
                         series.Label = "#VALY";
                         series.LegendText = "#VALX";
+                        series.BorderColor = Color.Black;
+                        series.ShadowColor = Color.DarkGray;
+                        series.ShadowOffset = 5;
+                        series.BorderWidth = 2;
+                        series.Font = new Font("Lucida Sans", 13, FontStyle.Bold);
+                        series.LabelForeColor = Color.White;
+
+                        chart3.ChartAreas[0].Area3DStyle.Enable3D = true;
+                        chart3.ChartAreas[0].Area3DStyle.Inclination = 30;
+                        chart3.ChartAreas[0].Area3DStyle.Rotation = 25;
+
+                        chart3.Legends[0].Font = new Font("Lucida Sans", 8, FontStyle.Regular);
 
                         chart3.Series.Add(series);
 
                         chart3.Titles.Clear();
-                        chart3.Titles.Add("Active and Inactive Subjects");
+                        Title chartTitle = new Title("Active and Inactive Subject", Docking.Top,
+                           new Font("Lucida Sans", 12, FontStyle.Bold), Color.DarkSlateGray);
+                        chart3.Titles.Add(chartTitle);
                     }
 
                     reader.Close();
                 }
+               
             }
             catch (Exception ex)
             {
@@ -108,11 +126,25 @@ namespace RegistrationForm
 
                         series.Label = "#VALY";
                         series.LegendText = "#VALX";
+                        series.BorderColor = Color.Black;
+                        series.ShadowColor = Color.DarkGray;
+                        series.ShadowOffset = 5;
+                        series.BorderWidth = 2;
+                        series.Font = new Font("Lucida Sans", 13, FontStyle.Bold);
+                        series.LabelForeColor = Color.White;
+
+                        chart2.ChartAreas[0].Area3DStyle.Enable3D = true;
+                        chart2.ChartAreas[0].Area3DStyle.Inclination = 30;
+                        chart2.ChartAreas[0].Area3DStyle.Rotation = 25;
+
+                        chart2.Legends[0].Font = new Font("Lucida Sans", 8, FontStyle.Regular);
 
                         chart2.Series.Add(series);
 
                         chart2.Titles.Clear();
-                        chart2.Titles.Add("Active and Inactive Teachers");
+                        Title chartTitle = new Title("Active and Inactive Teacher", Docking.Top,
+                           new Font("Lucida Sans", 12, FontStyle.Bold), Color.DarkSlateGray);
+                        chart2.Titles.Add(chartTitle);
                     }
 
                     reader.Close();
@@ -143,19 +175,36 @@ namespace RegistrationForm
 
                         chart1.Series.Clear();
 
-                        Series series = new Series("StudentStatus");
+                        Series series = new Series();
                         series.ChartType = SeriesChartType.Pie;
+
+
 
                         series.Points.AddXY("Active", activeCount);
                         series.Points.AddXY("Inactive", inactiveCount);
 
                         series.Label = "#VALY"; 
                         series.LegendText = "#VALX";
+                        series.BorderColor = Color.Black;
+                        series.ShadowColor = Color.DarkGray;
+                        series.ShadowOffset = 5;
+                        series.BorderWidth = 2;
+                        series.Font = new Font("Lucida Sans", 13, FontStyle.Bold);
+                        series.LabelForeColor = Color.White;
+                        
+
+                        chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
+                        chart1.ChartAreas[0].Area3DStyle.Inclination = 30;
+                        chart1.ChartAreas[0].Area3DStyle.Rotation = 25;
+
+                        chart1.Legends[0].Font = new Font("Lucida Sans", 8, FontStyle.Regular);
 
                         chart1.Series.Add(series);
 
                         chart1.Titles.Clear();
-                        chart1.Titles.Add("Active and Inactive Students");
+                        Title chartTitle = new Title("Active and Inactive Students", Docking.Top,
+                           new Font("Lucida Sans", 12, FontStyle.Bold), Color.DarkSlateGray);
+                        chart1.Titles.Add(chartTitle);
                     }
 
                     reader.Close();
@@ -186,6 +235,7 @@ namespace RegistrationForm
                     Series series = new Series("Enrollment");
                     series.ChartType = SeriesChartType.Spline; 
                     series.BorderWidth = 3;
+                    series.IsVisibleInLegend = false;
 
                     foreach (DataRow row in dt.Rows)
                     {
@@ -196,10 +246,13 @@ namespace RegistrationForm
 
                     chartEnrollment.Series.Add(series);
 
+                    
                     chartEnrollment.ChartAreas[0].AxisX.Title = "Year";
                     chartEnrollment.ChartAreas[0].AxisY.Title = "Number of Students";
                     chartEnrollment.Titles.Clear();
-                    chartEnrollment.Titles.Add("Student Enrollment Trend per Year");
+                    Title chartTitle = new Title("Student Enrollment Trend per Year", Docking.Top,
+                           new Font("Lucida Sans", 12, FontStyle.Bold), Color.DarkSlateGray);
+                    chartEnrollment.Titles.Add(chartTitle);
                 }
             }
             catch (Exception ex)
@@ -207,5 +260,7 @@ namespace RegistrationForm
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        
     }
 }

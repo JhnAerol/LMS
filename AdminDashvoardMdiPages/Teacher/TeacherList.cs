@@ -28,11 +28,23 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
         DataTable studentsInTeacher;
         DataTable dt;
 
+        int r;
+        string firstname;
+        string lastname;
+        string gender;
+        string prefix;
+        string fullname;
+
         public TeacherList()
         {
             InitializeComponent();
+            dgvTeacher.ClearSelection();
             ReadTeacher();
             ReadActiveTeacher();
+            dgvTeacher.Columns[0].ReadOnly = true;
+            dgvTeacher.Columns[1].ReadOnly = true;
+            dgvTeacher.Columns[2].ReadOnly = true;
+            dgvTeacher.Columns[11].ReadOnly = true;
         }
 
         public void ReadTeacher()
@@ -404,6 +416,54 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Teacher
             {
                 dataView.RowFilter = string.Empty;
             }
+        }
+
+        private void dgvTeacher_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            r = dgvTeacher.CurrentCell.RowIndex;
+            firstname = dgvTeacher.Rows[r].Cells[3].Value.ToString();
+            lastname = dgvTeacher.Rows[r].Cells[4].Value.ToString();
+            gender = dgvTeacher.Rows[r].Cells[6].Value.ToString();
+            prefix = "";
+            fullname = $"{firstname} {lastname}";
+
+            if (gender == "Male")
+            {
+                prefix = "Mr. ";
+            }
+            else
+            {
+                prefix = "Ms. ";
+            }
+            lblTitle.Text = $"List of Student for {prefix}{fullname}";
+
+            dgvStud.DataSource = studentsInTeacher;
+
+            panel1.Visible = false;
+            panel2.Visible = true;
+
+            lblTitle.Left = (panel3.ClientSize.Width - lblTitle.Width) / 2;
+        }
+
+        private void btnPrint2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF files (*.pdf)|*.pdf",
+                FileName = $"StudentsListFor{fullname.Replace(" ", "")}.pdf"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExportDataTableToPdfListOfStudentsInTeacher(studentsInTeacher, saveFileDialog.FileName, fullname, prefix);
+                MessageBox.Show("PDF exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+            panel1.Visible = true;
         }
     }
 }

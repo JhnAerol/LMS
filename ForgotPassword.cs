@@ -28,8 +28,10 @@ namespace RegistrationForm
                 SqlCommand cmd = new SqlCommand("SP_ForgotPassword", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                string hash = PasswordEncryption.SHA256Hash(txtNewPassword.Text);
+
                 cmd.Parameters.AddWithValue("Email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("Password", txtNewPassword.Text);
+                cmd.Parameters.AddWithValue("Password", hash);
 
                 try
                 {
@@ -40,8 +42,12 @@ namespace RegistrationForm
                     {
                         string message = reader["Message"].ToString();
                         MessageBox.Show(message, "Change Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     reader.Close();
+
+                    txtEmail.Clear();
+                    txtNewPassword.Clear();
                 }
                 catch (Exception ex) 
                 {

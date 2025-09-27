@@ -8,6 +8,6 @@ namespace RegistrationForm.Connection
 {
     public class ConnectionString
     {
-        public static string conn = @"Data Source=LAB4-PC24\LAB2PC20;Initial Catalog=Proel2D;Integrated Security=True";
+        public static string conn = @"Data Source=DESKTOP-H4JIUJU\SQLEXPRESS;Initial Catalog=Proel2D;Integrated Security=True";
     }
 }

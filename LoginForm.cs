@@ -15,6 +15,7 @@ namespace RegistrationForm
     public partial class LoginForm : Form
     {
         AdminDashboard admin;
+        Statistics statistics;
         public LoginForm()
         {
             InitializeComponent();
@@ -82,8 +83,12 @@ namespace RegistrationForm
                             {
                                 string role = reader["RoleCode"].ToString();
                                 User.Name = reader["FullName"].ToString();
+                                admin = new AdminDashboard();
+                                
+
                                 if (role == "AD")
                                 {
+
                                     this.Hide();
                                     new AdminDashboard().Show();
                                 }

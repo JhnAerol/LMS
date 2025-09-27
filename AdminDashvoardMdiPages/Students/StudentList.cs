@@ -28,11 +28,22 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
         DataTable coursesAndTeacher;
         DataTable dt;
 
+        int r;
+        string firstname;
+        string lastname;
+        string gender; 
+        string prefix; 
+        string fullname;
+
         public StudentList()
         {
             InitializeComponent();
+            dgvStudents.ClearSelection();
             ReadStudents();
             ReadActiveStudents();
+            dgvStudents.Columns[0].ReadOnly = true;
+            dgvStudents.Columns[1].ReadOnly = true;
+            dgvStudents.Columns[10].ReadOnly = true;
         }
 
         private void StudentList_Resize(object sender, EventArgs e)
@@ -270,7 +281,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
                 document.Add(title);
                 document.Add(new Paragraph("\n"));
 
-                float[] widths = new float[dt.Columns.Count];
+                    float[] widths = new float[dt.Columns.Count];
                 for (int i = 0; i < widths.Length; i++) widths[i] = 1f;
 
                 Table table = new Table(UnitValue.CreatePercentArray(widths)).UseAllAvailableWidth();
@@ -389,6 +400,55 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Students
             else
             {
                 dataView.RowFilter = string.Empty;
+            }
+        }
+
+        private void dgvStudents_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            r = dgvStudents.CurrentCell.RowIndex;
+            firstname = dgvStudents.Rows[r].Cells[2].Value.ToString();
+            lastname = dgvStudents.Rows[r].Cells[3].Value.ToString();
+            gender = dgvStudents.Rows[r].Cells[5].Value.ToString();
+            prefix = "";
+            fullname = $"{firstname} {lastname}";
+
+            if (gender == "Male")
+            {
+                prefix = "Mr. ";
+            }
+            else
+            {
+                prefix = "Ms. ";
+            }
+
+            lblTitle.Text = $"List of Courses and Teacher for {prefix}{fullname}";
+
+            dgvCT.DataSource = coursesAndTeacher;
+
+            panel1.Visible = false;
+            panel2.Visible = true;
+
+            lblTitle.Left = (panel3.ClientSize.Width - lblTitle.Width) / 2;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+            panel2.Visible = false;
+        }
+
+        private void btnPrint2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF files (*.pdf)|*.pdf",
+                FileName = $"CoursesAndTeacherFor{fullname.Replace(" ", "")}.pdf"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExportDataTableToPdfStudentCoursesAndTeacher(coursesAndTeacher, saveFileDialog.FileName, fullname, prefix);
+                MessageBox.Show("PDF exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

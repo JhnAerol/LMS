@@ -1,4 +1,5 @@
 ﻿using RegistrationForm.AdminDashvoardMdiPages.LogsFolder;
+using RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData;
 using RegistrationForm.Connection;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace RegistrationForm
                             cmd.Parameters.AddWithValue("RolePrefix", "ST");
                             cmd.Parameters.AddWithValue("FirstName", txtFirstName.Text);
                             cmd.Parameters.AddWithValue("Address", txtAddress.Text);
-                            cmd.Parameters.AddWithValue("Status", cmbStatus.Text);
+                            cmd.Parameters.AddWithValue("Status", "Active");
                             cmd.Parameters.AddWithValue("Username", TxtUsername.Text);
                             cmd.Parameters.AddWithValue("Password", hashpassword);
                             cmd.Parameters.AddWithValue("Email", txtEmail.Text);
@@ -84,8 +85,7 @@ namespace RegistrationForm
                             cmd.ExecuteNonQuery();
                             Log.Logss(User.Name, "Adding Student");
 
-                            MessageBox.Show("Registration Done!");
-                            new LoginForm().Show();
+                            MessageBox.Show("Registration Done!", "Successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     break;
@@ -113,14 +113,43 @@ namespace RegistrationForm
         {
             if(cmbTerm.SelectedIndex == 0)
             {
-                cmbCourses.Items.Add("Programming");
-                cmbCourses.Items.Add("Biology");
-                cmbCourses.Items.Add("Finance");
-                cmbCourses.Items.Add("Math");
-                cmbCourses.Items.Add("Criminology");
-                cmbCourses.Items.Add("Artificial Intelligence");
-                cmbCourses.Items.Add("Web");
+                cmbDept.Items.Add("College of Computer Science");
+                cmbDept.Items.Add("College of Busines and Management");
+                cmbDept.Items.Add("College of Nursing");
+                cmbDept.Items.Add("College of Education");
+                cmbDept.Items.Add("College of Criminal Justice");
             }
+            else
+            {
+                cmbDept.Items.Clear();
+            }
+           
+        }
+
+        public void DisplayCourses(int departmentId)
+        {
+            var repos = new SubjectRepos();
+            var courses = repos.GetCoursesByDepartment(departmentId);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("CourseName", typeof(string));
+
+            foreach (var course in courses)
+            {
+                var row = dt.NewRow();
+                row["CourseName"] = course.CourseName;
+                dt.Rows.Add(row);
+            }
+
+            cmbCourses.DataSource = dt;
+            cmbCourses.DisplayMember = "CourseName";
+        }
+
+        private void cmbDept_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int r = cmbDept.SelectedIndex + 1;
+
+            DisplayCourses(r);
         }
     }
 }

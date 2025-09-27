@@ -161,13 +161,8 @@ Set TeacherID = NULL
 WHERE CourseID = 1
 
 UPDATE Students
-SET EnrollmentDate = '2024-09-17 00:44:59.000'
-WHERE StudentID = 1035
-        AND StudentID = 1007
-        AND StudentID = 1009
-        AND StudentID = 1013
-        AND StudentID = 1027
-        AND StudentID = 1035
+SET EnrollmentDate = '2023-09-17 00:44:59.000'
+WHERE StudentID = 1025
 
 SELECT * FROM Departments
 SELECT * FROM Semesters
@@ -179,6 +174,14 @@ SELECT * FROM Enrollments
 SELECT * FROM Students
 SELECT * FROM Roles
 SELECT * FROM Logs
+
+UPDATE Courses
+SET Status = 'Active'
+WHERE CourseID = 26
+
+UPDATE Profiles
+SET Email = 'vaness@gmail.com'
+WHERE ProfileID = 2
 
 UPDATE Courses
 SET Status = 'Active'
@@ -597,4 +600,14 @@ BEGIN
         CONVERT(VARCHAR(8), LogTime, 108) AS LogTime  
     FROM Logs
     ORDER BY LogID DESC
+END
+
+CREATE PROC SP_GetCoursesByDepartment
+    @DepartmentID INT
+AS
+BEGIN
+    SELECT CourseID, CourseName 
+    FROM Courses
+    WHERE DepartmentID = @DepartmentID
+      AND Status = 'Active'; 
 END

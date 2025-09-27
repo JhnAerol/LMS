@@ -36,7 +36,7 @@ namespace RegistrationForm
             lblName.Text = User.Name;
         }
 
-        
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (sidebarExpand)
@@ -102,7 +102,6 @@ namespace RegistrationForm
         }
         private void btnSidebar_Click(object sender, EventArgs e)
         {
-            timer1.Start();
         }
 
         private void btnStudentBar_Click(object sender, EventArgs e)
@@ -258,6 +257,33 @@ namespace RegistrationForm
         private void StudentList_FormClosed(object sender, FormClosedEventArgs e)
         {
             studentList = null;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to log out?", "Log out Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                this.Hide();
+                new LoginForm().Show();
+
+            }
+        }
+
+        private void AdminDashboard_Shown(object sender, EventArgs e)
+        {
+            if (statistics == null)
+            {
+                statistics = new Statistics();
+                statistics.FormClosed += Statistic_FormClosed;
+                statistics.MdiParent = this;
+                statistics.Dock = DockStyle.Fill;
+                statistics.Show();
+            }
+            else
+            {
+                statistics.Activate();
+            }
         }
     }
 }

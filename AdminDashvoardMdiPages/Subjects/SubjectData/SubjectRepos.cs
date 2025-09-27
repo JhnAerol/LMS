@@ -287,5 +287,40 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects.SubjectData
 
             return studInSub;
         }
+
+        public List<SubjectModel> GetCoursesByDepartment(int departmentId)
+        {
+            var courses = new List<SubjectModel>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand("SP_GetCoursesByDepartment", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@DepartmentID", departmentId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var course = new SubjectModel
+                        {
+                            Id = reader.GetInt32(0),  
+                            CourseName = reader.GetString(1) 
+                        };
+                        courses.Add(course);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+
+            return courses;
+        }
     }
 }
