@@ -169,7 +169,7 @@ namespace RegistrationForm.AdminDashvoardMdiPages.Subjects
             int credits = Convert.ToInt32(dgvSubjects.Rows[r].Cells[4].Value.ToString());
             string status = dgvSubjects.Rows[r].Cells[5].Value.ToString();
 
-            DialogResult dr = MessageBox.Show("Are you sure you want to update this student ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Are you sure you want to update this subject ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)
             {
                 repos.UpdateSubject(id, courseName, courseCode, description, credits, status);

@@ -152,5 +152,7 @@ namespace RegistrationForm
             this.Hide();
             new ForgotPassword().Show();
         }
+
+
     }
 }

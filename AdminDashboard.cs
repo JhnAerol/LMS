@@ -114,6 +114,7 @@ namespace RegistrationForm
         }
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
+
             if (addstudent == null)
             {
                 addstudent = new AddStudent();
@@ -121,6 +122,7 @@ namespace RegistrationForm
                 addstudent.MdiParent = this;
                 addstudent.Dock = DockStyle.Fill;
                 addstudent.Show();
+                
             }
             else
             {
@@ -135,6 +137,10 @@ namespace RegistrationForm
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
+            ResetButtonColors();
+            btnStatistics.BackColor = Color.Gray;
+
+
             if (statistics == null)
             {
                 statistics = new Statistics();
@@ -142,15 +148,18 @@ namespace RegistrationForm
                 statistics.MdiParent = this;
                 statistics.Dock = DockStyle.Fill;
                 statistics.Show();
+                btnStatistics.BackColor = Color.White;
             }
             else
             {
+                btnStatistics.BackColor = Color.Gray;
                 statistics.Activate();
             }
         }
 
         private void Statistic_FormClosed(object sender, FormClosedEventArgs e)
         {
+            
             statistics = null;
         }
 
@@ -177,7 +186,10 @@ namespace RegistrationForm
 
         private void btnSubjects_Click(object sender, EventArgs e)
         {
-            if(subjects == null)
+            ResetButtonColors();
+            btnSubjects.BackColor = Color.Gray;
+
+            if (subjects == null)
             {
                 subjects = new Subjects();
                 subjects.FormClosed += Subjects_FormClosed;
@@ -198,13 +210,14 @@ namespace RegistrationForm
 
         private void btnLogs_Click(object sender, EventArgs e)
         {
+            ResetButtonColors();
+            btnLogs.BackColor = Color.Gray;
             if (logs == null)
             {
                 logs = new Logs();
                 logs.FormClosed += Logs_FormClosed;
                 logs.MdiParent = this;
                 logs.Dock = DockStyle.Fill;
-                logs.Show();
             }
             else
             {
@@ -284,6 +297,13 @@ namespace RegistrationForm
             {
                 statistics.Activate();
             }
+        }
+
+        private void ResetButtonColors()
+        {
+            btnStatistics.BackColor = Color.White;
+            btnSubjects.BackColor = Color.White;
+            btnLogs.BackColor = Color.White;
         }
     }
 }
